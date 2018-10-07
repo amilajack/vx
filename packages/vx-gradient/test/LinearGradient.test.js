@@ -13,7 +13,7 @@ describe('<LinearGradient />', () => {
       <svg>
         <LinearGradient id="linear" />
       </svg>,
-      div
+      div,
     );
   });
 });

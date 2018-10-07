@@ -17,7 +17,8 @@ export default () => (
       <GithubButton type="stargazers" namespace="hshoff" repo="vx" />
     </div>
 
-    <style jsx>{`
+    <style jsx>
+      {`
       .nav-inner {
         width: 95vw;
         margin: 0 auto;
@@ -69,7 +70,8 @@ export default () => (
           width: 99vw;
         }
       }
-    `}</style>
+    `}
+    </style>
   </div>
 );
 
@@ -79,7 +81,8 @@ const Item = ({ href, children, className }) => (
       <a className={className}>{children}</a>
     </Link>
 
-    <style jsx>{`
+    <style jsx>
+      {`
       .Item a {
         display: inline-block;
         padding: 10px;
@@ -102,6 +105,7 @@ const Item = ({ href, children, className }) => (
           margin-top: 0;
         }
       }
-    `}</style>
+    `}
+    </style>
   </li>
 );

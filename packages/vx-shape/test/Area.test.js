@@ -5,7 +5,7 @@ import { Area } from '../src';
 const fakeData = [
   { x: new Date('2017-01-01'), y: 5 },
   { x: new Date('2017-01-02'), y: 5 },
-  { x: new Date('2017-01-03'), y: 5 }
+  { x: new Date('2017-01-03'), y: 5 },
 ];
 
 const x = d => d.x;
@@ -22,13 +22,13 @@ describe('<Area />', () => {
 
   test('it should have the .vx-area class', () => {
     const wrapper = shallow(
-      <Area data={fakeData} xScale={fakeXScale} yScale={fakeYScale} x={x} y={y} />
+      <Area data={fakeData} xScale={fakeXScale} yScale={fakeYScale} x={x} y={y} />,
     );
     expect(wrapper.find('path').prop('className')).toBe('vx-area');
   });
 
-  test('it should expose its ref via an innerRef prop', done => {
-    const refCallback = n => {
+  test('it should expose its ref via an innerRef prop', (done) => {
+    const refCallback = (n) => {
       expect(n.tagName).toEqual('PATH');
       done();
     };
@@ -40,7 +40,7 @@ describe('<Area />', () => {
         x={x}
         y={y}
         innerRef={refCallback}
-      />
+      />,
     );
   });
 });

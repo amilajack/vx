@@ -13,7 +13,7 @@ describe('<RadialGradient />', () => {
       <svg>
         <RadialGradient id="radial" />
       </svg>,
-      div
+      div,
     );
   });
 });

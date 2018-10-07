@@ -15,7 +15,7 @@ describe('<PatternLines />', () => {
     const wrapper = mount(<PatternLines width={4} height={4} />);
     expect(console.error).toBeCalled();
     expect(console.error.mock.calls[0][0]).toEqual(
-      'Warning: Failed prop type: The prop `id` is marked as required in `PatternLines`, but its value is `undefined`.\n    in PatternLines'
+      'Warning: Failed prop type: The prop `id` is marked as required in `PatternLines`, but its value is `undefined`.\n    in PatternLines',
     );
   });
 
@@ -23,7 +23,7 @@ describe('<PatternLines />', () => {
     const wrapper = mount(<PatternLines id="test" height={4} />);
     expect(console.error).toBeCalled();
     expect(console.error.mock.calls[0][0]).toEqual(
-      'Warning: Failed prop type: The prop `width` is marked as required in `PatternLines`, but its value is `undefined`.\n    in PatternLines'
+      'Warning: Failed prop type: The prop `width` is marked as required in `PatternLines`, but its value is `undefined`.\n    in PatternLines',
     );
   });
 
@@ -31,7 +31,7 @@ describe('<PatternLines />', () => {
     const wrapper = mount(<PatternLines id="test" width={4} />);
     expect(console.error).toBeCalled();
     expect(console.error.mock.calls[0][0]).toEqual(
-      'Warning: Failed prop type: The prop `height` is marked as required in `PatternLines`, but its value is `undefined`.\n    in PatternLines'
+      'Warning: Failed prop type: The prop `height` is marked as required in `PatternLines`, but its value is `undefined`.\n    in PatternLines',
     );
   });
 

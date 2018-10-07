@@ -2,20 +2,19 @@ import React from 'react';
 import Tree from '../components/tiles/tree';
 import Show from '../components/show';
 
-export default ({}) => {
-  return (
-    <Show
-      events
-      title="Trees"
-      component={Tree}
-      margin={{
-        top: 0,
-        left: 80,
-        right: 80,
-        bottom: 10
-      }}
-    >
-      {`import React from 'react';
+export default ({}) => (
+  <Show
+    events
+    title="Trees"
+    component={Tree}
+    margin={{
+      top: 0,
+      left: 80,
+      right: 80,
+      bottom: 10,
+    }}
+  >
+    {`import React from 'react';
 import { Group } from '@vx/group';
 import { Tree } from '@vx/hierarchy';
 import { LinkHorizontal } from '@vx/shape';
@@ -144,6 +143,5 @@ export default ({
     </svg>
   );
 }`}
-    </Show>
-  );
-};
+  </Show>
+);

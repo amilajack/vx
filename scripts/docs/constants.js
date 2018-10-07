@@ -9,5 +9,5 @@ module.exports = {
   PACKAGES,
   README,
   ASSETS,
-  CSS_PATH
+  CSS_PATH,
 };

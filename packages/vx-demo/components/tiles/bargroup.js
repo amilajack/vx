@@ -22,8 +22,8 @@ export default ({
   height,
   events = false,
   margin = {
-    top: 40
-  }
+    top: 40,
+  },
 }) => {
   if (width < 10) return null;
 
@@ -36,30 +36,28 @@ export default ({
     rangeRound: [0, xMax],
     domain: data.map(x0),
     padding: 0.2,
-    tickFormat: () => val => formatDate(val)
+    tickFormat: () => val => formatDate(val),
   });
   const x1Scale = scaleBand({
     rangeRound: [0, x0Scale.bandwidth()],
     domain: keys,
-    padding: 0.1
+    padding: 0.1,
   });
   const yScale = scaleLinear({
     rangeRound: [yMax, 0],
     domain: [
       0,
-      max(data, d => {
-        return max(keys, key => d[key]);
-      })
-    ]
+      max(data, d => max(keys, key => d[key])),
+    ],
   });
   const zScale = scaleOrdinal({
     domain: keys,
-    range: ['#aeeef8', '#e5fd3d', '#9caff6']
+    range: ['#aeeef8', '#e5fd3d', '#9caff6'],
   });
 
   return (
     <svg width={width} height={height}>
-      <rect x={0} y={0} width={width} height={height} fill={`#612efb`} rx={14} />
+      <rect x={0} y={0} width={width} height={height} fill="#612efb" rx={14} />
       <BarGroup
         top={margin.top}
         data={data}
@@ -71,7 +69,7 @@ export default ({
         yScale={yScale}
         zScale={zScale}
         rx={4}
-        onClick={data => event => {
+        onClick={data => (event) => {
           if (!events) return;
           alert(`clicked: ${JSON.stringify(data)}`);
         }}
@@ -85,7 +83,7 @@ export default ({
         tickLabelProps={(value, index) => ({
           fill: '#e5fd3d',
           fontSize: 11,
-          textAnchor: 'middle'
+          textAnchor: 'middle',
         })}
       />
     </svg>

@@ -7,7 +7,8 @@ export default () => (
     <div className="page-left">
       <div className="comingsoon">
         <h1>
-          <a name="packages" />Packages
+          <a name="packages" />
+Packages
         </h1>
       </div>
       <ul>
@@ -233,7 +234,8 @@ export default () => (
       <Footer />
     </div>
 
-    <style jsx>{`
+    <style jsx>
+      {`
       .page-left {
         margin-top: 55px;
       }
@@ -283,6 +285,7 @@ export default () => (
           padding: 0;
         }
       }
-    `}</style>
+    `}
+    </style>
   </Page>
 );

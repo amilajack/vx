@@ -2,10 +2,9 @@ import React from 'react';
 import Show from '../components/show';
 import Radar from '../components/tiles/radar';
 
-export default () => {
-  return (
-    <Show component={Radar} title="Radar">
-      {`import React from 'react';
+export default () => (
+  <Show component={Radar} title="Radar">
+    {`import React from 'react';
 import { Group } from '@vx/group';
 import { letterFrequency } from '@vx/mock-data';
 import { scaleLinear } from '@vx/scale';
@@ -130,6 +129,5 @@ export default ({
   );
 };
 `}
-    </Show>
-  );
-};
+  </Show>
+);

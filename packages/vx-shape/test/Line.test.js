@@ -18,9 +18,9 @@ describe('<Line />', () => {
     expect(LineWrapper().prop('className')).toBe('vx-line');
   });
 
-  test('it should expose its ref via an innerRef prop', done => {
+  test('it should expose its ref via an innerRef prop', (done) => {
     const node = document.createElement('div');
-    const refCallback = n => {
+    const refCallback = (n) => {
       expect(n.tagName).toEqual('LINE');
       done();
     };

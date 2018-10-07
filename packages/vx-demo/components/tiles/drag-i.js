@@ -17,7 +17,7 @@ const colors = [
   '#e582ff',
   '#ff00d4',
   '#270eff',
-  '#827ce2'
+  '#827ce2',
 ];
 
 function genCircles({ num, width, height }) {
@@ -29,38 +29,35 @@ function genCircles({ num, width, height }) {
         id: i,
         radius,
         x: Math.round(Math.random() * (width - radius * 2) + radius),
-        y: Math.round(Math.random() * (height - radius * 2) + radius)
+        y: Math.round(Math.random() * (height - radius * 2) + radius),
       };
     });
 }
 
-const genItems = ({ width, height }) =>
-  genCircles({
-    num: width < 360 ? 40 : 185,
-    width,
-    height
-  });
+const genItems = ({ width, height }) => genCircles({
+  num: width < 360 ? 40 : 185,
+  width,
+  height,
+});
 
 export default class DragI extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      items: genItems({ ...props })
+      items: genItems({ ...props }),
     };
     this.colorScale = scaleOrdinal({
       range: colors,
-      domain: this.state.items.map(d => d.id)
+      domain: this.state.items.map(d => d.id),
     });
   }
 
   componentWillReceiveProps(nextProps) {
     const { width, height } = nextProps;
     if (width !== this.props.width) {
-      this.setState(() => {
-        return {
-          items: genItems({ ...nextProps })
-        };
-      });
+      this.setState(() => ({
+        items: genItems({ ...nextProps }),
+      }));
     }
   }
 
@@ -82,47 +79,47 @@ export default class DragI extends React.Component {
                 // so we need to move the data item
                 // to end of the array for it to be drawn
                 // "on top of" the other data items
-                this.setState((state, props) => {
-                  return {
-                    items: raise(state.items, i)
-                  };
-                });
+                this.setState((state, props) => ({
+                  items: raise(state.items, i),
+                }));
               }}
             >
-              {({ dragStart, dragEnd, dragMove, isDragging, dx, dy }) => {
-                return (
-                  <circle
-                    key={`dot-${d.id}`}
-                    cx={d.x}
-                    cy={d.y}
-                    r={isDragging ? d.radius + 4 : d.radius}
-                    fill={isDragging ? 'url(#stroke)' : this.colorScale(d.id)}
-                    transform={`translate(${dx}, ${dy})`}
-                    fillOpacity={0.9}
-                    stroke={isDragging ? 'white' : 'transparent'}
-                    strokeWidth={2}
-                    onMouseMove={dragMove}
-                    onMouseUp={dragEnd}
-                    onMouseDown={dragStart}
-                    onTouchStart={dragStart}
-                    onTouchMove={dragMove}
-                    onTouchEnd={dragEnd}
-                  />
-                );
-              }}
+              {({
+                dragStart, dragEnd, dragMove, isDragging, dx, dy,
+              }) => (
+                <circle
+                  key={`dot-${d.id}`}
+                  cx={d.x}
+                  cy={d.y}
+                  r={isDragging ? d.radius + 4 : d.radius}
+                  fill={isDragging ? 'url(#stroke)' : this.colorScale(d.id)}
+                  transform={`translate(${dx}, ${dy})`}
+                  fillOpacity={0.9}
+                  stroke={isDragging ? 'white' : 'transparent'}
+                  strokeWidth={2}
+                  onMouseMove={dragMove}
+                  onMouseUp={dragEnd}
+                  onMouseDown={dragStart}
+                  onTouchStart={dragStart}
+                  onTouchMove={dragMove}
+                  onTouchEnd={dragEnd}
+                />
+              )}
             </Drag>
           ))}
         </svg>
         <div className="deets">
           <div>
-            Based on Mike Bostock's{' '}
+            Based on Mike Bostock's
+            {' '}
             <a href="https://bl.ocks.org/mbostock/c206c20294258c18832ff80d8fd395c3">
               Circle Dragging II
             </a>
           </div>
         </div>
 
-        <style jsx>{`
+        <style jsx>
+          {`
           .Drag {
             display: flex;
             flex-direction: column;
@@ -140,7 +137,8 @@ export default class DragI extends React.Component {
           .deets > div {
             margin: 0.25rem;
           }
-        `}</style>
+        `}
+        </style>
       </div>
     );
   }

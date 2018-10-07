@@ -2,10 +2,9 @@ import React from 'react';
 import Show from '../components/show';
 import BarStack from '../components/tiles/barstack';
 
-export default () => {
-  return (
-    <Show events margin={{ top: 80 }} component={BarStack} title="Bar Stack">
-      {`import React from 'react';
+export default () => (
+  <Show events margin={{ top: 80 }} component={BarStack} title="Bar Stack">
+    {`import React from 'react';
 import { BarStack } from '@vx/shape';
 import { Group } from '@vx/group';
 import { Grid } from '@vx/grid';
@@ -168,6 +167,5 @@ export default withTooltip(
     );
   }
 );`}
-    </Show>
-  );
-};
+  </Show>
+);

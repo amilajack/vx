@@ -9,9 +9,9 @@ const axisProps = {
   orientation: 'left',
   scale: scaleLinear({
     rangeRound: [10, 0],
-    domain: [0, 10]
+    domain: [0, 10],
   }),
-  label: 'test axis'
+  label: 'test axis',
 };
 
 describe('<Axis />', () => {
@@ -55,7 +55,7 @@ describe('<Axis />', () => {
         axisLineClassName={axisLineClassName}
         labelClassName={labelClassName}
         tickClassName={tickClassName}
-      />
+      />,
     ).dive();
 
     expect(wrapper.find(`.${axisClassName}`).length).toBe(1);
@@ -69,7 +69,7 @@ describe('<Axis />', () => {
     const wrapper = shallow(<Axis {...axisProps} tickLabelProps={() => tickProps} />);
 
     const ticks = wrapper.find('.vx-axis-tick');
-    ticks.forEach(tick => {
+    ticks.forEach((tick) => {
       expect(tick.find(Text).props()).toEqual(expect.objectContaining(tickProps));
     });
 
@@ -85,7 +85,7 @@ describe('<Axis />', () => {
           expect(index).toBeGreaterThan(-1);
           return {};
         }}
-      />
+      />,
     );
 
     expect.hasAssertions();
@@ -105,7 +105,7 @@ describe('<Axis />', () => {
       wrapper
         .find('.vx-axis-tick')
         .at(0)
-        .key()
+        .key(),
     ).toBe('vx-tick-0-0');
   });
 
@@ -115,7 +115,7 @@ describe('<Axis />', () => {
       wrapper
         .find('.vx-axis-tick')
         .at(0)
-        .key()
+        .key(),
     ).toBe('vx-tick-1-1');
   });
 
@@ -125,7 +125,7 @@ describe('<Axis />', () => {
       wrapper
         .children()
         .not('.vx-axis-tick')
-        .find('.vx-axis-line').length
+        .find('.vx-axis-line').length,
     ).toBe(1);
   });
 
@@ -135,7 +135,7 @@ describe('<Axis />', () => {
       wrapper
         .children()
         .not('.vx-axis-tick')
-        .find('Line').length
+        .find('Line').length,
     ).toBe(0);
   });
 
@@ -150,7 +150,7 @@ describe('<Axis />', () => {
       wrapper
         .children()
         .find('.vx-axis-tick')
-        .find('Line').length
+        .find('Line').length,
     ).toBe(0);
   });
 
@@ -161,7 +161,7 @@ describe('<Axis />', () => {
         .children()
         .find('.vx-axis-tick')
         .not('.vx-axis-line')
-        .find('Line').length
+        .find('Line').length,
     ).toBe(0);
 
     wrapper = shallow(<Axis {...axisProps} tickValues={[2]} />);
@@ -173,14 +173,14 @@ describe('<Axis />', () => {
 
   test('it should use tickFormat to format ticks if passed', () => {
     const wrapper = shallow(
-      <Axis {...axisProps} tickValues={[0]} tickFormat={(val, i) => 'test!!!'} />
+      <Axis {...axisProps} tickValues={[0]} tickFormat={(val, i) => 'test!!!'} />,
     );
     expect(
       wrapper
         .children()
         .find('.vx-axis-tick')
         .find(Text)
-        .prop('children')
+        .prop('children'),
     ).toBe('test!!!');
   });
 
@@ -191,7 +191,7 @@ describe('<Axis />', () => {
         .children()
         .find('.vx-axis-tick')
         .find(Text)
-        .prop('children')
+        .prop('children'),
     ).toBe(0);
   });
 
@@ -199,8 +199,8 @@ describe('<Axis />', () => {
     const axisProps = {
       scale: scaleBand({
         rangeRound: [10, 0],
-        domain: [0, 10]
-      })
+        domain: [0, 10],
+      }),
     };
     const wrapper = shallow(<Axis {...axisProps} tickStroke="blue" />);
     const points = wrapper.children().find(Line);

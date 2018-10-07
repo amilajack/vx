@@ -60,8 +60,8 @@ describe('<LinePathAnnotation />', () => {
           y={0}
         >
           test
-        </text>
-      )
+        </text>,
+      ),
     ).toBe(true);
   });
 });

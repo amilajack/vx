@@ -7,7 +7,7 @@ const linePathProps = {
   x: d => d.x,
   y: d => d.y,
   xScale: d => d,
-  yScale: d => d
+  yScale: d => d,
 };
 
 describe('<LinePath />', () => {
@@ -15,9 +15,9 @@ describe('<LinePath />', () => {
     expect(LinePath).toBeDefined();
   });
 
-  test('it should expose its ref via an innerRef prop', done => {
+  test('it should expose its ref via an innerRef prop', (done) => {
     const node = document.createElement('div');
-    const refCallback = n => {
+    const refCallback = (n) => {
       expect(n.tagName).toEqual('PATH');
       done();
     };

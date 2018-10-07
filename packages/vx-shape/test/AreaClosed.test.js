@@ -11,17 +11,16 @@ const fakeXScale = val => 50;
 const fakeYScale = val => 50;
 fakeYScale.range = () => [100, 0];
 
-const AreaClosedWrapper = ({ ...restProps }) =>
-  shallow(
-    <AreaClosed
-      data={appleStock}
-      xScale={fakeXScale}
-      yScale={fakeYScale}
-      x={xStock}
-      y={yStock}
-      {...restProps}
-    />
-  );
+const AreaClosedWrapper = ({ ...restProps }) => shallow(
+  <AreaClosed
+    data={appleStock}
+    xScale={fakeXScale}
+    yScale={fakeYScale}
+    x={xStock}
+    y={yStock}
+    {...restProps}
+  />,
+);
 
 describe('<AreaClosed />', () => {
   test('it should be defined', () => {
@@ -32,13 +31,13 @@ describe('<AreaClosed />', () => {
     expect(
       AreaClosedWrapper()
         .find('path')
-        .prop('className')
+        .prop('className'),
     ).toBe('vx-area-closed');
   });
 
-  test('it should expose its ref via an innerRef prop', done => {
+  test('it should expose its ref via an innerRef prop', (done) => {
     const node = document.createElement('div');
-    const refCallback = n => {
+    const refCallback = (n) => {
       expect(n.tagName).toEqual('PATH');
       done();
     };
@@ -51,7 +50,7 @@ describe('<AreaClosed />', () => {
         y={yStock}
         innerRef={refCallback}
       />,
-      node
+      node,
     );
   });
 });

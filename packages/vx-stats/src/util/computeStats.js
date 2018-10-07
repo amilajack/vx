@@ -1,8 +1,8 @@
-export default function(numericalArray) {
+export default function (numericalArray) {
   const points = [...numericalArray].sort((a, b) => a - b);
   const sampleSize = points.length;
   const firstQuartile = points[Math.round(sampleSize / 4)];
-  const thirdQuartile = points[Math.round(3 * sampleSize / 4)];
+  const thirdQuartile = points[Math.round((3 * sampleSize) / 4)];
   const IQR = thirdQuartile - firstQuartile;
 
   const min = firstQuartile - 1.5 * IQR;
@@ -22,13 +22,13 @@ export default function(numericalArray) {
 
   values[values.length - 1] = max;
 
-  points.filter(p => p >= min && p <= max).forEach(p => {
+  points.filter(p => p >= min && p <= max).forEach((p) => {
     bins[Math.floor((p - min) / actualBinWidth) + 1] += 1;
   });
 
   const binData = values.map((v, i) => ({
     value: v,
-    count: bins[i]
+    count: bins[i],
   }));
 
   const boxPlot = {
@@ -37,11 +37,11 @@ export default function(numericalArray) {
     median: points[Math.round(sampleSize / 2)],
     thirdQuartile,
     max,
-    outliers
+    outliers,
   };
 
   return {
     boxPlot,
-    binData
+    binData,
   };
 }

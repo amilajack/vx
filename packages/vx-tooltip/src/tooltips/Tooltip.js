@@ -2,7 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
-export default function Tooltip({ className, top, left, style, children, ...restProps }) {
+export default function Tooltip({
+  className, top, left, style, children, ...restProps
+}) {
   return (
     <div
       className={cx('vx-tooltip-portal', className)}
@@ -18,7 +20,7 @@ export default function Tooltip({ className, top, left, style, children, ...rest
         pointerEvents: 'none',
         top,
         left,
-        ...style
+        ...style,
       }}
       {...restProps}
     >
@@ -32,5 +34,5 @@ Tooltip.propTypes = {
   top: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   className: PropTypes.string,
   style: PropTypes.object,
-  children: PropTypes.any
+  children: PropTypes.any,
 };

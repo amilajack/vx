@@ -5,7 +5,7 @@ import cx from 'classnames';
 import additionalProps from '../util/additionalProps';
 
 const propTypes = {
-  polygon: PropTypes.arrayOf(PropTypes.array)
+  polygon: PropTypes.arrayOf(PropTypes.array),
 };
 
 export default function VoronoiPolygon({ polygon, className, ...restProps }) {

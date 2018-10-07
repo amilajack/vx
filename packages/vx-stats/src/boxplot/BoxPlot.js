@@ -114,7 +114,7 @@ export default function BoxPlot({
             {...additionalProps(outlierProps, {
               data: d,
               cx,
-              cy
+              cy,
             })}
           />
         );
@@ -133,7 +133,7 @@ export default function BoxPlot({
           x1: maxLinePos[0],
           x2: maxLinePos[2],
           y1: maxLinePos[1],
-          y2: maxLinePos[3]
+          y2: maxLinePos[3],
         })}
       />
       <line
@@ -167,7 +167,7 @@ export default function BoxPlot({
           x1: boxPos[0],
           x2: boxPos[0] + boxPos[2],
           y1: boxPos[1],
-          y2: boxPos[1] + boxPos[3]
+          y2: boxPos[1] + boxPos[3],
         })}
       />
       <line
@@ -184,7 +184,7 @@ export default function BoxPlot({
           x1: medianLinePos[0],
           x2: medianLinePos[2],
           y1: medianLinePos[1],
-          y2: medianLinePos[3]
+          y2: medianLinePos[3],
         })}
       />
       <line
@@ -209,7 +209,7 @@ export default function BoxPlot({
           x1: minLinePos[0],
           x2: minLinePos[2],
           y1: minLinePos[1],
-          y2: minLinePos[3]
+          y2: minLinePos[3],
         })}
       />
       {container && (
@@ -229,7 +229,7 @@ export default function BoxPlot({
             max,
             min,
             thirdQuartile,
-            firstQuartile
+            firstQuartile,
           })}
         />
       )}

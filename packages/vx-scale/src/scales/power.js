@@ -1,6 +1,8 @@
 import { scalePow } from 'd3-scale';
 
-export default ({ range, rangeRound, domain, exponent, nice = false, clamp = false }) => {
+export default ({
+  range, rangeRound, domain, exponent, nice = false, clamp = false,
+}) => {
   const scale = scalePow();
 
   if (range) scale.range(range);

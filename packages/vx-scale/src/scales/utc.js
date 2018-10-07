@@ -1,6 +1,8 @@
 import { scaleUtc } from 'd3-scale';
 
-export default ({ range, rangeRound, domain, nice = false, clamp = false }) => {
+export default ({
+  range, rangeRound, domain, nice = false, clamp = false,
+}) => {
   const scale = scaleUtc();
 
   if (range) scale.range(range);

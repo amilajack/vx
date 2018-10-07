@@ -7,9 +7,7 @@ const Lines = ({ lines }) => {
   const size = lines.length;
   return (
     <span aria-hidden="true" className="line-numbers-rows">
-      {lines.map((l, i) => {
-        return <span key={`line-number-${size}-${i}`} />;
-      })}
+      {lines.map((l, i) => <span key={`line-number-${size}-${i}`} />)}
     </span>
   );
 };
@@ -17,16 +15,17 @@ const Lines = ({ lines }) => {
 export default ({ children }) => {
   const match = children.match(/\n(?!$)/g);
   const linesNum = match ? match.length + 1 : 1;
-  let lines = new Array(linesNum + 1).fill(1);
+  const lines = new Array(linesNum + 1).fill(1);
   const html = [
     ReactDOMServer.renderToString(<Lines lines={lines} />),
-    Prism.highlight(children, Prism.languages.jsx)
+    Prism.highlight(children, Prism.languages.jsx),
   ].join('');
 
   return (
     <pre className="codeblock line-numbers">
       <code dangerouslySetInnerHTML={{ __html: html }} />
-      <style jsx>{`
+      <style jsx>
+        {`
         .codeblock code {
           display: block;
           padding: 0 0 0 1.5rem;
@@ -49,7 +48,8 @@ export default ({ children }) => {
             pointer-events: none;
           }
         }
-      `}</style>
+      `}
+      </style>
     </pre>
   );
 };

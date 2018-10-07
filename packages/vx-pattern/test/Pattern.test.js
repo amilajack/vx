@@ -1,6 +1,6 @@
 import { mount } from 'enzyme';
 import React from 'react';
-import { Pattern } from '../';
+import { Pattern } from '..';
 
 describe('<Pattern />', () => {
   beforeEach(() => {
@@ -15,11 +15,11 @@ describe('<Pattern />', () => {
     const wrapper = mount(
       <Pattern width={4} height={4}>
         <rect />
-      </Pattern>
+      </Pattern>,
     );
     expect(console.error).toBeCalled();
     expect(console.error.mock.calls[0][0]).toEqual(
-      'Warning: Failed prop type: The prop `id` is marked as required in `W`, but its value is `undefined`.\n    in W'
+      'Warning: Failed prop type: The prop `id` is marked as required in `W`, but its value is `undefined`.\n    in W',
     );
   });
 
@@ -27,11 +27,11 @@ describe('<Pattern />', () => {
     const wrapper = mount(
       <Pattern id="test" height={4}>
         <rect />
-      </Pattern>
+      </Pattern>,
     );
     expect(console.error).toBeCalled();
     expect(console.error.mock.calls[0][0]).toEqual(
-      'Warning: Failed prop type: The prop `width` is marked as required in `W`, but its value is `undefined`.\n    in W'
+      'Warning: Failed prop type: The prop `width` is marked as required in `W`, but its value is `undefined`.\n    in W',
     );
   });
 
@@ -39,11 +39,11 @@ describe('<Pattern />', () => {
     const wrapper = mount(
       <Pattern id="test" width={4}>
         <rect />
-      </Pattern>
+      </Pattern>,
     );
     expect(console.error).toBeCalled();
     expect(console.error.mock.calls[0][0]).toEqual(
-      'Warning: Failed prop type: The prop `height` is marked as required in `W`, but its value is `undefined`.\n    in W'
+      'Warning: Failed prop type: The prop `height` is marked as required in `W`, but its value is `undefined`.\n    in W',
     );
   });
 
@@ -51,7 +51,7 @@ describe('<Pattern />', () => {
     const wrapper = mount(<Pattern id="test" width={4} />);
     expect(console.error).toBeCalled();
     expect(console.error.mock.calls[0][0]).toEqual(
-      'Warning: Failed prop type: The prop `children` is marked as required in `W`, but its value is `undefined`.\n    in W'
+      'Warning: Failed prop type: The prop `children` is marked as required in `W`, but its value is `undefined`.\n    in W',
     );
   });
 });

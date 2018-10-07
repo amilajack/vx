@@ -11,16 +11,16 @@ export default function LegendShape({
   label,
   fill,
   size,
-  shapeStyle
+  shapeStyle,
 }) {
   return (
     <div
       className="vx-legend-shape"
       style={{
         display: 'flex',
-        width: !!size ? size({ ...label }) : width,
-        height: !!size ? size({ ...label }) : height,
-        margin
+        width: size ? size({ ...label }) : width,
+        height: size ? size({ ...label }) : height,
+        margin,
       }}
     >
       {renderShape({
@@ -29,7 +29,7 @@ export default function LegendShape({
         width,
         height,
         fill,
-        shapeStyle
+        shapeStyle,
       })}
     </div>
   );

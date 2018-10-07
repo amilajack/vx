@@ -9,7 +9,7 @@ export default function withParentSize(BaseComponent) {
 
       this.state = {
         parentWidth: null,
-        parentHeight: null
+        parentHeight: null,
       };
 
       this.animationFrameID = null;
@@ -18,12 +18,12 @@ export default function withParentSize(BaseComponent) {
 
     componentDidMount() {
       this.ro = new ResizeObserver((entries, observer) => {
-        entries.forEach(entry => {
+        entries.forEach((entry) => {
           const { width, height } = entry.contentRect;
           this.animationFrameID = window.requestAnimationFrame(() => {
             this.debouncedResize({
               width,
-              height
+              height,
             });
           });
         });
@@ -39,7 +39,7 @@ export default function withParentSize(BaseComponent) {
     resize({ width, height }) {
       this.setState({
         parentWidth: width,
-        parentHeight: height
+        parentHeight: height,
       });
     }
 
@@ -48,25 +48,25 @@ export default function withParentSize(BaseComponent) {
       return (
         <div
           style={{ width: '100%', height: '100%' }}
-          ref={ref => {
+          ref={(ref) => {
             this.container = ref;
           }}
         >
-          {parentWidth !== null &&
-            parentHeight !== null && (
+          {parentWidth !== null
+            && parentHeight !== null && (
               <BaseComponent
                 parentWidth={parentWidth}
                 parentHeight={parentHeight}
                 {...this.props}
               />
-            )}
+          )}
         </div>
       );
     }
   }
 
   WrappedComponent.defaultProps = {
-    debounceTime: 300
+    debounceTime: 300,
   };
 
   return WrappedComponent;

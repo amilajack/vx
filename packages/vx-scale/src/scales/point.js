@@ -1,6 +1,8 @@
 import { scalePoint } from 'd3-scale';
 
-export default ({ range, rangeRound, domain, padding, align, nice = false }) => {
+export default ({
+  range, rangeRound, domain, padding, align, nice = false,
+}) => {
   const scale = scalePoint();
 
   if (range) scale.range(range);

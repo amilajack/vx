@@ -17,15 +17,13 @@ const rawData = cityTemperature;
 const cityNames = Object.keys(rawData[0]).filter(k => k !== 'date');
 
 // rawData => [{id: "", values: [{ date, temperature }]}, ...]
-const data = cityNames.map(cityName => {
-  return {
-    id: cityName,
-    values: rawData.map(d => ({
-      date: d.date,
-      temperature: d[cityName]
-    }))
-  };
-});
+const data = cityNames.map(cityName => ({
+  id: cityName,
+  values: rawData.map(d => ({
+    date: d.date,
+    temperature: d[cityName],
+  })),
+}));
 
 // utils
 const getCity = cityId => data.find(city => city.id === cityId);
@@ -42,20 +40,22 @@ const initialSelectedState = cityNames;
 const withSelected = compose(
   withState('selected', 'setSelected', initialSelectedState),
   withHandlers({
-    updateSelected: ({ selected, setSelected }) => cityId => {
+    updateSelected: ({ selected, setSelected }) => (cityId) => {
       let fn = addCity;
       if (selected.includes(cityId)) fn = removeCityOrResetSelected;
       setSelected(fn(selected, cityId));
     },
-    resetSelected: ({ setSelected }) => event => {
+    resetSelected: ({ setSelected }) => (event) => {
       setSelected(initialSelectedState);
-    }
-  })
+    },
+  }),
 );
 
 // the chart
 export default withSelected(
-  ({ selected, updateSelected, resetSelected, width, height, margin }) => {
+  ({
+    selected, updateSelected, resetSelected, width, height, margin,
+  }) => {
     // bounds
     const xMax = width - margin.left - margin.right;
     const yMax = height - margin.top - margin.bottom;
@@ -67,20 +67,18 @@ export default withSelected(
     // scales
     const xScale = scaleTime({
       range: [0, xMax],
-      domain: extent(rawData, x)
+      domain: extent(rawData, x),
     });
     const yScale = scaleLinear({
       range: [yMax, 0],
       domain: extent(
-        selected.slice().reduce((ret, c) => {
-          return ret.concat(getCity(c).values);
-        }, []),
-        y
-      )
+        selected.slice().reduce((ret, c) => ret.concat(getCity(c).values), []),
+        y,
+      ),
     });
     const color = scaleOrdinal({
       range: ['#3b99d8', '#239f85', '#9a5cb4'],
-      domain: cityNames
+      domain: cityNames,
     });
 
     return (
@@ -104,7 +102,7 @@ export default withSelected(
                 />
                 <text
                   fontSize={9}
-                  dy={'0.35em'}
+                  dy="0.35em"
                   dx={2}
                   x={xScale(x(lastDatum))}
                   y={yScale(y(lastDatum))}
@@ -125,10 +123,12 @@ export default withSelected(
         </Group>
       </svg>
     );
-  }
+  },
 );
 
-const Legend = ({ data, selected, updateSelected, xMax, yMax, color }) => {
+const Legend = ({
+  data, selected, updateSelected, xMax, yMax, color,
+}) => {
   const margin = 20;
   const xPadding = 60;
   const yPadding = 30;
@@ -138,28 +138,28 @@ const Legend = ({ data, selected, updateSelected, xMax, yMax, color }) => {
   const fontSize = 12;
   return (
     <g>
-      {data.map(({ id, values }, i) => {
-        return (
-          <g
-            key={`legend-${id}`}
-            className="legend-item"
-            transform={`translate(${xOffset}, ${yOffset - i * margin})`}
-            onClick={() => updateSelected(id)}
-            fillOpacity={selected.includes(id) ? 1 : 0.5}
-          >
-            <rect width={size} height={size} fill={color(id)} />
-            <text fill={color(id)} dy={'.7em'} dx={fontSize} fontSize={fontSize}>
-              {id}
-            </text>
-          </g>
-        );
-      })}
+      {data.map(({ id, values }, i) => (
+        <g
+          key={`legend-${id}`}
+          className="legend-item"
+          transform={`translate(${xOffset}, ${yOffset - i * margin})`}
+          onClick={() => updateSelected(id)}
+          fillOpacity={selected.includes(id) ? 1 : 0.5}
+        >
+          <rect width={size} height={size} fill={color(id)} />
+          <text fill={color(id)} dy=".7em" dx={fontSize} fontSize={fontSize}>
+            {id}
+          </text>
+        </g>
+      ))}
 
-      <style jsx>{`
+      <style jsx>
+        {`
         .legend-item:hover {
           cursor: pointer;
         }
-      `}</style>
+      `}
+      </style>
     </g>
   );
 };

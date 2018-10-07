@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import { feature } from 'topojson-client';
 import Projection from '../src/projections/Projection';
 import topology from './topo.json';
-import { feature } from 'topojson-client';
 
 describe('<Projection />', () => {
   // TopoJSON with two polygons

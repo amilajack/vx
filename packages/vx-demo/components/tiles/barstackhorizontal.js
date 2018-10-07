@@ -33,14 +33,14 @@ export default withTooltip(
       top: 40,
       left: 50,
       right: 40,
-      bottom: 100
+      bottom: 100,
     },
     tooltipOpen,
     tooltipLeft,
     tooltipTop,
     tooltipData,
     hideTooltip,
-    showTooltip
+    showTooltip,
   }) => {
     if (width < 10) return null;
 
@@ -56,17 +56,17 @@ export default withTooltip(
     const xScale = scaleLinear({
       rangeRound: [0, xMax],
       domain: [0, max(totals)],
-      nice: true
+      nice: true,
     });
     const yScale = scaleBand({
       rangeRound: [yMax, 0],
       domain: data.map(y),
       padding: 0.2,
-      tickFormat: () => val => formatDate(val)
+      tickFormat: () => val => formatDate(val),
     });
     const zScale = scaleOrdinal({
       domain: keys,
-      range: ['#6c5efb', '#c998ff', '#a44afe']
+      range: ['#6c5efb', '#c998ff', '#a44afe'],
     });
 
     let tooltipTimeout;
@@ -84,27 +84,27 @@ export default withTooltip(
               xScale={xScale}
               yScale={yScale}
               zScale={zScale}
-              onClick={data => event => {
+              onClick={data => (event) => {
                 if (!events) return;
                 alert(`clicked: ${JSON.stringify(data)}`);
               }}
-              onMouseLeave={data => event => {
+              onMouseLeave={data => (event) => {
                 tooltipTimeout = setTimeout(() => {
                   hideTooltip();
                 }, 300);
               }}
-              onMouseMove={data => event => {
+              onMouseMove={data => (event) => {
                 if (tooltipTimeout) clearTimeout(tooltipTimeout);
                 showTooltip({
                   tooltipData: data,
                   tooltipTop: margin.top + yScale(y(data.data)),
-                  tooltipLeft: margin.left + data.width + 75
+                  tooltipLeft: margin.left + data.width + 75,
                 });
               }}
             />
             <AxisLeft
-              hideAxisLine={true}
-              hideTicks={true}
+              hideAxisLine
+              hideTicks
               scale={yScale}
               stroke="#a44afe"
               tickStroke="#a44afe"
@@ -112,7 +112,7 @@ export default withTooltip(
                 fill: '#a44afe',
                 fontSize: 11,
                 textAnchor: 'end',
-                dy: '0.33em'
+                dy: '0.33em',
               })}
             />
             <AxisBottom
@@ -123,7 +123,7 @@ export default withTooltip(
               tickLabelProps={(value, index) => ({
                 fill: '#a44afe',
                 fontSize: 11,
-                textAnchor: 'middle'
+                textAnchor: 'middle',
               })}
             />
           </Group>
@@ -135,7 +135,7 @@ export default withTooltip(
             width: '100%',
             display: 'flex',
             justifyContent: 'center',
-            fontSize: '14px'
+            fontSize: '14px',
           }}
         >
           <LegendOrdinal scale={zScale} direction="row" labelMargin="0 15px 0 0" />
@@ -147,13 +147,16 @@ export default withTooltip(
             style={{
               minWidth: 60,
               backgroundColor: 'rgba(0,0,0,0.9)',
-              color: 'white'
+              color: 'white',
             }}
           >
             <div style={{ color: zScale(tooltipData.key) }}>
               <strong>{tooltipData.key}</strong>
             </div>
-            <div>{tooltipData.data[tooltipData.key]}℉</div>
+            <div>
+              {tooltipData.data[tooltipData.key]}
+℉
+            </div>
             <div>
               <small>{tooltipData.xFormatted}</small>
             </div>
@@ -161,5 +164,5 @@ export default withTooltip(
         )}
       </div>
     );
-  }
+  },
 );

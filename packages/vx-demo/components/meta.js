@@ -39,7 +39,8 @@ export default ({ title = 'visualization components' }) => (
       <link rel="stylesheet" href="static/prism/prism-line-numbers.css" />
       <link href="https://fonts.googleapis.com/css?family=Montserrat:800" rel="stylesheet" />
     </Head>
-    <style jsx global>{`
+    <style jsx global>
+      {`
       body {
         width: 100vw;
         overflow-x: hidden;
@@ -204,6 +205,7 @@ export default ({ title = 'visualization components' }) => (
           min-width: 100%;
         }
       }
-    `}</style>
+    `}
+    </style>
   </div>
 );

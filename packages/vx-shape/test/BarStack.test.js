@@ -1,6 +1,6 @@
 import React from 'react';
-import { BarStack } from '../src';
 import { shallow } from 'enzyme';
+import { BarStack } from '../src';
 
 const xScale = jest.fn();
 xScale.bandwidth = jest.fn();
@@ -24,7 +24,7 @@ describe('<BarStack />', () => {
         yScale={d => d}
         zScale={d => d}
         keys={[]}
-      />
+      />,
     );
     expect(wrapper.prop('className')).toEqual('vx-bar-stack');
   });
@@ -41,7 +41,7 @@ describe('<BarStack />', () => {
         yScale={d => d}
         zScale={d => d}
         keys={[]}
-      />
+      />,
     );
     expect(wrapper.prop('className')).toEqual('vx-bar-stack test');
   });
@@ -58,7 +58,7 @@ describe('<BarStack />', () => {
         yScale={d => d}
         zScale={d => d}
         keys={[]}
-      />
+      />,
     );
     expect(wrapper.prop('top')).toEqual(2);
     expect(wrapper.prop('left')).toEqual(3);

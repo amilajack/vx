@@ -7,7 +7,7 @@ import DefaultNode from '../HierarchyDefaultNode';
 
 Treemap.propTypes = {
   root: PropTypes.object.isRequired,
-  children: PropTypes.func
+  children: PropTypes.func,
 };
 
 export default function Treemap({
@@ -43,7 +43,7 @@ export default function Treemap({
 
   const data = treemap(root);
 
-  if (!!children) {
+  if (children) {
     return (
       <Group top={top} left={left} className={cx('vx-treemap', className)}>
         {children({ data })}
@@ -53,12 +53,10 @@ export default function Treemap({
 
   return (
     <Group top={top} left={left} className={cx('vx-treemap', className)}>
-      {nodeComponent &&
-        data.descendants().map((node, i) => {
-          return (
-            <Group key={`treemap-node-${i}`}>{React.createElement(nodeComponent, { node })}</Group>
-          );
-        })}
+      {nodeComponent
+        && data.descendants().map((node, i) => (
+          <Group key={`treemap-node-${i}`}>{React.createElement(nodeComponent, { node })}</Group>
+        ))}
     </Group>
   );
 }

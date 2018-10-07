@@ -2,10 +2,9 @@ import React from 'react';
 import Show from '../components/show';
 import GeoMercator from '../components/tiles/geo-mercator';
 
-export default () => {
-  return (
-    <Show events component={GeoMercator} title="Geo Mercator">
-      {`
+export default () => (
+  <Show events component={GeoMercator} title="Geo Mercator">
+    {`
 import React from 'react';
 import { GradientTealBlue, RadialGradient } from '@vx/gradient';
 import { Mercator } from '@vx/geo';
@@ -48,6 +47,5 @@ export default ({ width, height, events = false }) => {
   );
 };
 `}
-    </Show>
-  );
-};
+  </Show>
+);

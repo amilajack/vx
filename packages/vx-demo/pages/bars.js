@@ -2,10 +2,9 @@ import React from 'react';
 import Show from '../components/show';
 import Bars from '../components/tiles/bars';
 
-export default () => {
-  return (
-    <Show events component={Bars} title="Bars">
-      {`import React from 'react';
+export default () => (
+  <Show events component={Bars} title="Bars">
+    {`import React from 'react';
 import { Bar } from '@vx/shape';
 import { Group } from '@vx/group';
 import { GradientTealBlue } from '@vx/gradient';
@@ -79,6 +78,5 @@ export default ({
     </svg>
   );
 }`}
-    </Show>
-  );
-};
+  </Show>
+);

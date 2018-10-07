@@ -23,7 +23,10 @@ class Area extends React.Component {
     super(props);
     this.handleTooltip = this.handleTooltip.bind(this);
   }
-  handleTooltip({ event, data, xStock, xScale, yScale }) {
+
+  handleTooltip({
+    event, data, xStock, xScale, yScale,
+  }) {
     const { showTooltip } = this.props;
     const { x } = localPoint(event);
     const x0 = xScale.invert(x);
@@ -37,9 +40,10 @@ class Area extends React.Component {
     showTooltip({
       tooltipData: d,
       tooltipLeft: x,
-      tooltipTop: yScale(d.close)
+      tooltipTop: yScale(d.close),
     });
   }
+
   render() {
     const {
       width,
@@ -50,7 +54,7 @@ class Area extends React.Component {
       tooltipData,
       tooltipTop,
       tooltipLeft,
-      events
+      events,
     } = this.props;
     if (width < 10) return null;
 
@@ -61,12 +65,12 @@ class Area extends React.Component {
     // scales
     const xScale = scaleTime({
       range: [0, xMax],
-      domain: extent(stock, xStock)
+      domain: extent(stock, xStock),
     });
     const yScale = scaleLinear({
       range: [yMax, 0],
       domain: [0, max(stock, yStock) + yMax / 3],
-      nice: true
+      nice: true,
     });
 
     return (
@@ -100,8 +104,8 @@ class Area extends React.Component {
             x={xStock}
             y={yStock}
             strokeWidth={1}
-            stroke={'url(#gradient)'}
-            fill={'url(#gradient)'}
+            stroke="url(#gradient)"
+            fill="url(#gradient)"
             curve={curveMonotoneX}
           />
           <Bar
@@ -112,30 +116,27 @@ class Area extends React.Component {
             fill="transparent"
             rx={14}
             data={stock}
-            onTouchStart={data => event =>
-              this.handleTooltip({
-                event,
-                data,
-                xStock,
-                xScale,
-                yScale
-              })}
-            onTouchMove={data => event =>
-              this.handleTooltip({
-                event,
-                data,
-                xStock,
-                xScale,
-                yScale
-              })}
-            onMouseMove={data => event =>
-              this.handleTooltip({
-                event,
-                data,
-                xStock,
-                xScale,
-                yScale
-              })}
+            onTouchStart={data => event => this.handleTooltip({
+              event,
+              data,
+              xStock,
+              xScale,
+              yScale,
+            })}
+            onTouchMove={data => event => this.handleTooltip({
+              event,
+              data,
+              xStock,
+              xScale,
+              yScale,
+            })}
+            onMouseMove={data => event => this.handleTooltip({
+              event,
+              data,
+              xStock,
+              xScale,
+              yScale,
+            })}
             onMouseLeave={data => event => hideTooltip()}
           />
           {tooltipData && (
@@ -178,7 +179,7 @@ class Area extends React.Component {
               left={tooltipLeft + 12}
               style={{
                 backgroundColor: 'rgba(92, 119, 235, 1.000)',
-                color: 'white'
+                color: 'white',
               }}
             >
               {`$${yStock(tooltipData)}`}
@@ -187,7 +188,7 @@ class Area extends React.Component {
               top={yMax - 14}
               left={tooltipLeft}
               style={{
-                transform: 'translateX(-50%)'
+                transform: 'translateX(-50%)',
               }}
             >
               {formatDate(xStock(tooltipData))}

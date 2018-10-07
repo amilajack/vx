@@ -16,7 +16,7 @@ describe('<PatternCircles />', () => {
     const wrapper = mount(<PatternCircles width={4} height={4} />);
     expect(console.error).toBeCalled();
     expect(console.error.mock.calls[0][0]).toEqual(
-      'Warning: Failed prop type: The prop `id` is marked as required in `PatternCircles`, but its value is `undefined`.\n    in PatternCircles'
+      'Warning: Failed prop type: The prop `id` is marked as required in `PatternCircles`, but its value is `undefined`.\n    in PatternCircles',
     );
   });
 
@@ -24,7 +24,7 @@ describe('<PatternCircles />', () => {
     const wrapper = mount(<PatternCircles id="test" height={4} />);
     expect(console.error).toBeCalled();
     expect(console.error.mock.calls[0][0]).toEqual(
-      'Warning: Failed prop type: The prop `width` is marked as required in `PatternCircles`, but its value is `undefined`.\n    in PatternCircles'
+      'Warning: Failed prop type: The prop `width` is marked as required in `PatternCircles`, but its value is `undefined`.\n    in PatternCircles',
     );
   });
 
@@ -32,7 +32,7 @@ describe('<PatternCircles />', () => {
     const wrapper = mount(<PatternCircles id="test" width={4} />);
     expect(console.error).toBeCalled();
     expect(console.error.mock.calls[0][0]).toEqual(
-      'Warning: Failed prop type: The prop `height` is marked as required in `PatternCircles`, but its value is `undefined`.\n    in PatternCircles'
+      'Warning: Failed prop type: The prop `height` is marked as required in `PatternCircles`, but its value is `undefined`.\n    in PatternCircles',
     );
   });
 
@@ -57,7 +57,7 @@ describe('createCircles()', () => {
       stroke: 'black',
       strokeWidth: 3,
       strokeDasharray: 'none',
-      className: 'blah'
+      className: 'blah',
     })[0];
   }
 

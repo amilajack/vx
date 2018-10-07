@@ -20,11 +20,11 @@ Legend.propTypes = {
   fill: PropTypes.func,
   shape: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   labelFormat: PropTypes.func,
-  labelTransform: PropTypes.func
+  labelTransform: PropTypes.func,
 };
 
 const defaultStyle = {
-  display: 'flex'
+  display: 'flex',
 };
 
 export default function Legend({
@@ -55,7 +55,7 @@ export default function Legend({
       className={cx('vx-legend', className)}
       style={{
         ...style,
-        flexDirection: direction
+        flexDirection: direction,
       }}
     >
       {labels.map((label, i) => {
@@ -87,12 +87,10 @@ export default function Legend({
 }
 
 function defaultTransform({ scale, labelFormat }) {
-  return (d, i) => {
-    return {
-      datum: d,
-      index: i,
-      text: `${labelFormat(d, i)}`,
-      value: scale(d)
-    };
-  };
+  return (d, i) => ({
+    datum: d,
+    index: i,
+    text: `${labelFormat(d, i)}`,
+    value: scale(d),
+  });
 }

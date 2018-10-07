@@ -8,7 +8,7 @@ Chord.propTypes = {
   sortGroups: PropTypes.func,
   sortSubgroups: PropTypes.func,
   sortChords: PropTypes.func,
-  children: PropTypes.func.isRequired
+  children: PropTypes.func.isRequired,
 };
 
 export default function Chord({

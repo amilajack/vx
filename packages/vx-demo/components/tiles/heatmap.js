@@ -20,15 +20,14 @@ export default ({
     top: 10,
     left: 20,
     right: 20,
-    bottom: 110
+    bottom: 110,
   },
-  separation = 20
+  separation = 20,
 }) => {
   if (width < 10) return null;
 
   // bounds
-  const size =
-    width > margin.left + margin.right ? width - margin.left - margin.right - separation : width;
+  const size = width > margin.left + margin.right ? width - margin.left - margin.right - separation : width;
   const xMax = size / 2;
   const yMax = height - margin.bottom - margin.top;
   const maxBucketSize = max(data, d => y(d).length);
@@ -39,23 +38,23 @@ export default ({
   // scales
   const xScale = scaleLinear({
     range: [0, xMax],
-    domain: [0, data.length]
+    domain: [0, data.length],
   });
   const yScale = scaleLinear({
     range: [yMax, 0],
-    domain: [0, maxBucketSize]
+    domain: [0, maxBucketSize],
   });
   const colorScale = scaleLinear({
     range: ['#77312f', '#f33d15'],
-    domain: [0, colorMax]
+    domain: [0, colorMax],
   });
   const colorScale2 = scaleLinear({
     range: ['#122549', '#b4fbde'],
-    domain: [0, colorMax]
+    domain: [0, colorMax],
   });
   const opacityScale = scaleLinear({
     range: [0.1, 1],
-    domain: [0, colorMax]
+    domain: [0, colorMax],
   });
 
   return (
@@ -70,7 +69,7 @@ export default ({
           opacityScale={opacityScale}
           radius={min([bWidth, bHeight]) / 2}
           gap={2}
-          onClick={data => event => {
+          onClick={data => (event) => {
             if (!events) return;
             alert(`clicked: ${JSON.stringify(data.bin)}`);
           }}
@@ -86,7 +85,7 @@ export default ({
           binWidth={bWidth}
           binHeight={bWidth}
           gap={2}
-          onClick={data => event => {
+          onClick={data => (event) => {
             if (!events) return;
             alert(`clicked: ${JSON.stringify(data.bin)}`);
           }}

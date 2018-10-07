@@ -2,10 +2,9 @@ import React from 'react';
 import Show from '../components/show';
 import DragI from '../components/tiles/drag-i';
 
-export default () => {
-  return (
-    <Show component={DragI} title="Drag I">
-      {`import React from 'react';
+export default () => (
+  <Show component={DragI} title="Drag I">
+    {`import React from 'react';
 import { scaleOrdinal } from '@vx/scale';
 import { LinearGradient } from '@vx/gradient';
 import { Drag, raise } from '@vx/drag';
@@ -149,6 +148,5 @@ export default class DragI extends React.Component {
   }
 }
 `}
-    </Show>
-  );
-};
+  </Show>
+);

@@ -24,10 +24,10 @@ export default ({ width, height, margin }) => {
   // scales
   const xScale = scaleTime({
     range: [0, xMax],
-    domain: extent(data, x)
+    domain: extent(data, x),
   });
   const yScale = scaleLinear({
-    range: [yMax, 0]
+    range: [yMax, 0],
   });
 
   return (

@@ -8,7 +8,7 @@ export const withTooltipPropTypes = {
   tooltipData: PropTypes.object,
   updateTooltip: PropTypes.func,
   showTooltip: PropTypes.func,
-  hideTooltip: PropTypes.func
+  hideTooltip: PropTypes.func,
 };
 
 export default function withTooltip(
@@ -17,9 +17,9 @@ export default function withTooltip(
     style: {
       position: 'relative',
       width: 'inherit',
-      height: 'inherit'
-    }
-  }
+      height: 'inherit',
+    },
+  },
 ) {
   class WrappedComponent extends React.PureComponent {
     constructor(props) {
@@ -28,37 +28,43 @@ export default function withTooltip(
         tooltipOpen: false,
         tooltipLeft: undefined,
         tooltipTop: undefined,
-        tooltipData: undefined
+        tooltipData: undefined,
       };
       this.updateTooltip = this.updateTooltip.bind(this);
       this.showTooltip = this.showTooltip.bind(this);
       this.hideTooltip = this.hideTooltip.bind(this);
     }
-    updateTooltip({ tooltipOpen, tooltipLeft, tooltipTop, tooltipData }) {
+
+    updateTooltip({
+      tooltipOpen, tooltipLeft, tooltipTop, tooltipData,
+    }) {
       this.setState(prevState => ({
         ...prevState,
         tooltipOpen,
         tooltipLeft,
         tooltipTop,
-        tooltipData
+        tooltipData,
       }));
     }
+
     showTooltip({ tooltipLeft, tooltipTop, tooltipData }) {
       this.updateTooltip({
         tooltipOpen: true,
         tooltipLeft,
         tooltipTop,
-        tooltipData
+        tooltipData,
       });
     }
+
     hideTooltip() {
       this.updateTooltip({
         tooltipOpen: false,
         tooltipLeft: undefined,
         tooltipTop: undefined,
-        tooltipData: undefined
+        tooltipData: undefined,
       });
     }
+
     render() {
       return (
         <div {...containerProps}>

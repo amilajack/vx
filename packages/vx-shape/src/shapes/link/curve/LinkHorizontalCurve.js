@@ -4,8 +4,10 @@ import PropTypes from 'prop-types';
 import { path as d3Path } from 'd3-path';
 import additionalProps from '../../../util/additionalProps';
 
-export function pathHorizontalCurve({ source, target, x, y, percent }) {
-  return data => {
+export function pathHorizontalCurve({
+  source, target, x, y, percent,
+}) {
+  return (data) => {
     const sourceData = source(data);
     const targetData = target(data);
 
@@ -34,7 +36,7 @@ LinkHorizontalCurve.propTypes = {
   y: PropTypes.func,
   source: PropTypes.func,
   target: PropTypes.func,
-  path: PropTypes.func
+  path: PropTypes.func,
 };
 
 export default function LinkHorizontalCurve({
@@ -49,7 +51,9 @@ export default function LinkHorizontalCurve({
   percent = 0.2,
   ...restProps
 }) {
-  path = path || pathHorizontalCurve({ source, target, x, y, percent });
+  path = path || pathHorizontalCurve({
+    source, target, x, y, percent,
+  });
   return (
     <path
       ref={innerRef}

@@ -20,15 +20,15 @@ export default class App extends React.Component {
     this.state = { showNav: true };
     this.toggleNav = this.toggleNav.bind(this);
   }
+
   toggleNav(event) {
     event.preventDefault();
     event.stopPropagation();
-    this.setState(prevState => {
-      return {
-        showNav: !prevState.showNav
-      };
-    });
+    this.setState(prevState => ({
+      showNav: !prevState.showNav,
+    }));
   }
+
   render() {
     const { width, height } = this.props;
     if (width < 20) return null;
@@ -38,7 +38,7 @@ export default class App extends React.Component {
         <div
           className="app-nav"
           style={{
-            display: this.state.showNav ? 'flex' : 'none'
+            display: this.state.showNav ? 'flex' : 'none',
           }}
         >
           <Nav />
@@ -49,25 +49,24 @@ export default class App extends React.Component {
           </div>
           <div className="app-graph">
             <ParentSize className="graph-container">
-              {({ width: w, height: h }) => {
-                return (
-                  <Lines
-                    width={w}
-                    height={h}
-                    margin={{
-                      top: 0,
-                      left: 0,
-                      right: 0,
-                      bottom: 0
-                    }}
-                  />
-                );
-              }}
+              {({ width: w, height: h }) => (
+                <Lines
+                  width={w}
+                  height={h}
+                  margin={{
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                  }}
+                />
+              )}
             </ParentSize>
           </div>
         </div>
 
-        <style jsx>{`
+        <style jsx>
+          {`
           .app {
             display: flex;
           }
@@ -94,7 +93,8 @@ export default class App extends React.Component {
             flex: 1;
             overflow: hidden;
           }
-        `}</style>
+        `}
+        </style>
       </div>
     );
   }

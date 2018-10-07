@@ -1,12 +1,12 @@
-const pkg = require('./package.json');
 const resolve = require('rollup-plugin-node-resolve');
 const babel = require('rollup-plugin-babel');
 const replace = require('rollup-plugin-replace');
 const uglify = require('rollup-plugin-uglify').uglify;
+const pkg = require('./package.json');
 
 const deps = Object.keys({
   ...pkg.dependencies,
-  ...pkg.peerDependencies
+  ...pkg.peerDependencies,
 });
 
 const globals = deps.reduce((o, name) => {
@@ -39,20 +39,20 @@ export default [
       resolve(),
       babel({
         exclude: 'node_modules/**',
-        plugins: ['external-helpers']
+        plugins: ['external-helpers'],
       }),
       replace({
-        ENV: JSON.stringify('production')
+        ENV: JSON.stringify('production'),
       }),
-      uglify()
+      uglify(),
     ],
     output: {
       extend: true,
       file: pkg.main,
       format: 'umd',
       globals,
-      name: 'vx'
-    }
+      name: 'vx',
+    },
   },
   {
     input: 'src/index',
@@ -61,12 +61,12 @@ export default [
       resolve(),
       babel({
         exclude: 'node_modules/**',
-        plugins: ['external-helpers']
+        plugins: ['external-helpers'],
       }),
       replace({
-        ENV: JSON.stringify('production')
-      })
+        ENV: JSON.stringify('production'),
+      }),
     ],
-    output: [{ file: pkg.module, format: 'es' }]
-  }
+    output: [{ file: pkg.module, format: 'es' }],
+  },
 ];

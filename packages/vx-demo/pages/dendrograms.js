@@ -2,20 +2,19 @@ import React from 'react';
 import Dendrogram from '../components/tiles/dendrogram';
 import Show from '../components/show';
 
-export default ({}) => {
-  return (
-    <Show
-      events
-      title="Dendrograms"
-      component={Dendrogram}
-      margin={{
-        top: 80,
-        left: 10,
-        right: 10,
-        bottom: 80
-      }}
-    >
-      {`import React from 'react';
+export default ({}) => (
+  <Show
+    events
+    title="Dendrograms"
+    component={Dendrogram}
+    margin={{
+      top: 80,
+      left: 10,
+      right: 10,
+      bottom: 80,
+    }}
+  >
+    {`import React from 'react';
 import { Group } from '@vx/group';
 import { Cluster } from '@vx/hierarchy';
 import { LinkVertical } from '@vx/shape';
@@ -132,6 +131,5 @@ export default ({
     </svg>
   );
 }`}
-    </Show>
-  );
-};
+  </Show>
+);

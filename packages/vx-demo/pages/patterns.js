@@ -2,19 +2,18 @@ import React from 'react';
 import Show from '../components/show';
 import Patterns from '../components/tiles/patterns';
 
-export default () => {
-  return (
-    <Show
-      component={Patterns}
-      title="Patterns"
-      margin={{
-        top: 10,
-        left: 10,
-        right: 10,
-        bottom: 10
-      }}
-    >
-      {`import React from 'react';
+export default () => (
+  <Show
+    component={Patterns}
+    title="Patterns"
+    margin={{
+      top: 10,
+      left: 10,
+      right: 10,
+      bottom: 10,
+    }}
+  >
+    {`import React from 'react';
 import { Bar } from '@vx/shape';
 import {
   PatternLines,
@@ -162,6 +161,5 @@ export default ({
     </svg>
   );
 }`}
-    </Show>
-  );
-};
+  </Show>
+);

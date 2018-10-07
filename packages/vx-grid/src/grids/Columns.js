@@ -25,11 +25,11 @@ export default function Columns({
         const x = offset ? scale(d) + offset : scale(d);
         const fromPoint = new Point({
           x,
-          y: 0
+          y: 0,
         });
         const toPoint = new Point({
           x,
-          y: height
+          y: height,
         });
         return (
           <Line

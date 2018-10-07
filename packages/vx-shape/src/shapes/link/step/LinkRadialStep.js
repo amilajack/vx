@@ -3,8 +3,10 @@ import cx from 'classnames';
 import PropTypes from 'prop-types';
 import additionalProps from '../../../util/additionalProps';
 
-export function pathRadialStep({ source, target, x, y }) {
-  return data => {
+export function pathRadialStep({
+  source, target, x, y,
+}) {
+  return (data) => {
     const sourceData = source(data);
     const targetData = target(data);
 
@@ -38,7 +40,7 @@ LinkRadialStep.propTypes = {
   y: PropTypes.func,
   source: PropTypes.func,
   target: PropTypes.func,
-  path: PropTypes.func
+  path: PropTypes.func,
 };
 
 export default function LinkRadialStep({
@@ -52,7 +54,13 @@ export default function LinkRadialStep({
   target = d => d.target,
   ...restProps
 }) {
-  path = path || pathRadialStep({ source, target, x, y });
+  path = path
+    || pathRadialStep({
+      source,
+      target,
+      x,
+      y,
+    });
   return (
     <path
       ref={innerRef}

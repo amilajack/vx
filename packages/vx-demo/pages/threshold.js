@@ -5,7 +5,8 @@ import Threshold from '../components/tiles/threshold';
 function Description({ width }) {
   return (
     <div style={{ width, fontSize: 14 }}>
-      Based on Mike Bostock's{' '}
+      Based on Mike Bostock's
+      {' '}
       <a href="https://bl.ocks.org/mbostock/3894205" target="_blank">
         Difference Chart
       </a>
@@ -13,20 +14,19 @@ function Description({ width }) {
   );
 }
 
-export default () => {
-  return (
-    <Show
-      component={Threshold}
-      title="Threshold"
-      description={Description}
-      margin={{
-        top: 40,
-        left: 40,
-        right: 20,
-        bottom: 50
-      }}
-    >
-      {`import React from 'react';
+export default () => (
+  <Show
+    component={Threshold}
+    title="Threshold"
+    description={Description}
+    margin={{
+      top: 40,
+      left: 40,
+      right: 20,
+      bottom: 50,
+    }}
+  >
+    {`import React from 'react';
 import { Group } from '@vx/group';
 import { curveBasis } from '@vx/curve';
 import { LinePath } from '@vx/shape';
@@ -127,6 +127,5 @@ export default class Thresholds extends React.Component {
     );
   }
 }`}
-    </Show>
-  );
-};
+  </Show>
+);

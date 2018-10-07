@@ -10,9 +10,9 @@ const mockHierarchy = hierarchy({
     { name: 'Cain' },
     {
       name: 'Seth',
-      children: [{ name: 'Enos' }, { name: 'Noam' }]
-    }
-  ]
+      children: [{ name: 'Enos' }, { name: 'Noam' }],
+    },
+  ],
 });
 
 const TreeWrapper = ({ ...restProps }) => shallow(<Tree {...restProps} />);

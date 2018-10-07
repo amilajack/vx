@@ -2,10 +2,9 @@ import React from 'react';
 import Show from '../components/show';
 import DragII from '../components/tiles/drag-ii';
 
-export default () => {
-  return (
-    <Show component={DragII} title="Drag II">
-      {`import React from 'react';
+export default () => (
+  <Show component={DragII} title="Drag II">
+    {`import React from 'react';
 import { LinePath } from '@vx/shape';
 import { localPoint } from '@vx/event';
 import { Drag } from '@vx/drag';
@@ -135,6 +134,5 @@ export default class DragII extends React.Component {
   }
 }
 `}
-    </Show>
-  );
-};
+  </Show>
+);

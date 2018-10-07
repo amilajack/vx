@@ -33,7 +33,7 @@ describe('<Pie />', () => {
           expect(arcs[0]).toMatchObject({ value: A, index: 0 });
           expect(arcs[1]).toMatchObject({ value: B, index: 1 });
         }}
-      </Pie>
+      </Pie>,
     );
   });
 

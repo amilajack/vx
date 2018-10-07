@@ -2,19 +2,18 @@ import React from 'react';
 import Show from '../components/show';
 import Streamgraph from '../components/tiles/streamgraph';
 
-export default () => {
-  return (
-    <Show
-      component={Streamgraph}
-      title="Streamgraph"
-      margin={{
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 10
-      }}
-    >
-      {`// Inspired by Mike Bostock's Streamgraph &
+export default () => (
+  <Show
+    component={Streamgraph}
+    title="Streamgraph"
+    margin={{
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 10,
+    }}
+  >
+    {`// Inspired by Mike Bostock's Streamgraph &
 // Lee Byron’s test data generator.
 // https://bl.ocks.org/mbostock/4060954
 
@@ -184,6 +183,5 @@ export default class Streamgraph extends React.Component {
     );
   }
 }`}
-    </Show>
-  );
-};
+  </Show>
+);

@@ -1,10 +1,10 @@
 import React from 'react';
 import cx from 'classnames';
 import { Group } from '@vx/group';
+import { area, stack as d3stack } from 'd3-shape';
 import additionalProps from '../util/additionalProps';
 import stackOrder from '../util/stackOrder';
 import stackOffset from '../util/stackOffset';
-import { area, stack as d3stack } from 'd3-shape';
 
 export default function Stack({
   className,
@@ -44,29 +44,28 @@ export default function Stack({
   const seriesData = stack(data);
   if (reverse) seriesData.reverse();
 
-  if (render)
+  if (render) {
     return (
       <Group top={top} left={left}>
         {render({ seriesData, path })}
       </Group>
     );
+  }
 
   return (
     <Group top={top} left={left}>
-      {seriesData.map((series, i) => {
-        return (
-          <path
-            className={cx('vx-stack', className)}
-            key={`stack-${i}-${series.key || ''}`}
-            d={path(series)}
-            {...additionalProps(restProps, {
-              datum: series[i],
-              index: i,
-              series
-            })}
-          />
-        );
-      })}
+      {seriesData.map((series, i) => (
+        <path
+          className={cx('vx-stack', className)}
+          key={`stack-${i}-${series.key || ''}`}
+          d={path(series)}
+          {...additionalProps(restProps, {
+            datum: series[i],
+            index: i,
+            series,
+          })}
+        />
+      ))}
     </Group>
   );
 }

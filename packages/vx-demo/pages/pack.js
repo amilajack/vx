@@ -2,10 +2,9 @@ import React from 'react';
 import Show from '../components/show';
 import Pack from '../components/tiles/pack';
 
-export default () => {
-  return (
-    <Show component={Pack} title="Pack">
-      {`import React from 'react';
+export default () => (
+  <Show component={Pack} title="Pack">
+    {`import React from 'react';
 import { Group } from '@vx/group';
 import { Pack } from '@vx/hierarchy';
 import { hierarchy } from 'd3-hierarchy';
@@ -77,6 +76,5 @@ export default ({
   );
 };
 `}
-    </Show>
-  );
-};
+  </Show>
+);

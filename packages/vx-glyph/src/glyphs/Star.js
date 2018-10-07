@@ -4,7 +4,9 @@ import { symbol, symbolStar } from 'd3-shape';
 import Glyph from './Glyph';
 import additionalProps from '../util/additionalProps';
 
-export default function GlyphStar({ children, className, top, left, size, ...restProps }) {
+export default function GlyphStar({
+  children, className, top, left, size, ...restProps
+}) {
   const path = symbol();
   path.type(symbolStar);
   if (size) path.size(size);

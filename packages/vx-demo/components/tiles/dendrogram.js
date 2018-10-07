@@ -17,25 +17,25 @@ const raw = {
           name: 'C',
           children: [
             {
-              name: 'C1'
-            }
-          ]
-        }
-      ]
+              name: 'C1',
+            },
+          ],
+        },
+      ],
     },
     {
       name: 'B',
-      children: [{ name: 'B1' }, { name: 'B2' }, { name: 'B3' }]
+      children: [{ name: 'B1' }, { name: 'B2' }, { name: 'B3' }],
     },
     {
       name: 'X',
       children: [
         {
-          name: 'Z'
-        }
-      ]
-    }
-  ]
+          name: 'Z',
+        },
+      ],
+    },
+  ],
 };
 
 function Node({ node, events }) {
@@ -58,10 +58,10 @@ function Node({ node, events }) {
         />
       )}
       <text
-        dy={'.33em'}
+        dy=".33em"
         fontSize={9}
         fontFamily="Arial"
-        textAnchor={'middle'}
+        textAnchor="middle"
         style={{ pointerEvents: 'none' }}
         fill={node.depth === 0 ? '#286875' : node.children ? 'white' : '#ddf163'}
       >
@@ -85,8 +85,8 @@ export default ({
     top: 40,
     left: 0,
     right: 0,
-    bottom: 110
-  }
+    bottom: 110,
+  },
 }) => {
   if (width < 10) return null;
   const data = hierarchy(raw);

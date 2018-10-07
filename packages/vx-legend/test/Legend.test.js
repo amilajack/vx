@@ -6,8 +6,8 @@ import { scaleLinear } from '../../vx-scale';
 const defaultProps = {
   scale: scaleLinear({
     rangeRound: [10, 0],
-    domain: [0, 10]
-  })
+    domain: [0, 10],
+  }),
 };
 
 describe('<Legend />', () => {
@@ -19,7 +19,7 @@ describe('<Legend />', () => {
     const wrapper = shallow(<Legend {...defaultProps} />);
     expect(wrapper.prop('style')).toEqual({
       display: 'flex',
-      flexDirection: 'column'
+      flexDirection: 'column',
     });
   });
 
@@ -27,7 +27,7 @@ describe('<Legend />', () => {
     const wrapper = shallow(<Legend {...defaultProps} style={{ display: 'block' }} />);
     expect(wrapper.prop('style')).toEqual({
       display: 'block',
-      flexDirection: 'column'
+      flexDirection: 'column',
     });
   });
 
@@ -35,7 +35,7 @@ describe('<Legend />', () => {
     const wrapper = shallow(<Legend {...defaultProps} direction="row" />);
     expect(wrapper.prop('style')).toEqual({
       display: 'flex',
-      flexDirection: 'row'
+      flexDirection: 'row',
     });
   });
 
@@ -56,7 +56,7 @@ describe('<Legend />', () => {
       datum: 10,
       index: 1,
       text: '10',
-      value: 0
+      value: 0,
     });
   });
 });

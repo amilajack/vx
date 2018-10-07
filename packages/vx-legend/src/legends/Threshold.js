@@ -9,7 +9,7 @@ LegendThreshold.propTypes = {
   labelFormat: PropTypes.func,
   labelDelimiter: PropTypes.string,
   labelLower: PropTypes.string,
-  labelUpper: PropTypes.string
+  labelUpper: PropTypes.string,
 };
 
 export default function LegendThreshold({
@@ -23,12 +23,11 @@ export default function LegendThreshold({
   ...restProps
 }) {
   domain = domain || scale.range();
-  labelTransform =
-    labelTransform ||
-    defaultTransform({
+  labelTransform = labelTransform
+    || defaultTransform({
       labelDelimiter,
       labelLower,
-      labelUpper
+      labelUpper,
     });
   return (
     <Legend
@@ -71,7 +70,7 @@ function defaultTransform({ labelDelimiter, labelLower, labelUpper }) {
         text: `${format(labelFormat, x0, i)}${delimiter}${format(labelFormat, x1, i)}`,
         value: scale(value),
         datum: d,
-        index: i
+        index: i,
       };
     };
   };

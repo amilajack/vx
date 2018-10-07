@@ -25,8 +25,8 @@ export default ({
     top: 30,
     left: 20,
     right: 20,
-    bottom: 110
-  }
+    bottom: 110,
+  },
 }) => {
   if (width < 10) return null;
   const radius = Math.min(width, height) / 2;

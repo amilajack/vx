@@ -18,32 +18,32 @@ const raw = {
           name: 'C',
           children: [
             {
-              name: 'C1'
+              name: 'C1',
             },
             {
               name: 'D',
               children: [
                 {
-                  name: 'D1'
+                  name: 'D1',
                 },
                 {
-                  name: 'D2'
+                  name: 'D2',
                 },
                 {
-                  name: 'D3'
-                }
-              ]
-            }
-          ]
-        }
-      ]
+                  name: 'D3',
+                },
+              ],
+            },
+          ],
+        },
+      ],
     },
     { name: 'Z' },
     {
       name: 'B',
-      children: [{ name: 'B1' }, { name: 'B2' }, { name: 'B3' }]
-    }
-  ]
+      children: [{ name: 'B1' }, { name: 'B2' }, { name: 'B3' }],
+    },
+  ],
 };
 
 function Node({ node, events }) {
@@ -58,7 +58,7 @@ function Node({ node, events }) {
           width={width}
           y={-height / 2}
           x={-width / 2}
-          fill={'#272b4d'}
+          fill="#272b4d"
           stroke={node.children ? '#03c0dc' : '#26deb0'}
           strokeWidth={1}
           strokeDasharray={!node.children ? '2,2' : '0'}
@@ -71,10 +71,10 @@ function Node({ node, events }) {
         />
       )}
       <text
-        dy={'.33em'}
+        dy=".33em"
         fontSize={9}
         fontFamily="Arial"
-        textAnchor={'middle'}
+        textAnchor="middle"
         style={{ pointerEvents: 'none' }}
         fill={node.depth === 0 ? '#71248e' : node.children ? 'white' : '#26deb0'}
       >
@@ -96,8 +96,8 @@ export default ({
     top: 10,
     left: 30,
     right: 40,
-    bottom: 80
-  }
+    bottom: 80,
+  },
 }) => {
   if (width < 10) return null;
   const data = hierarchy(raw);

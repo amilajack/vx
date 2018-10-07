@@ -10,7 +10,7 @@ import {
   GradientPurpleRed,
   GradientPurpleTeal,
   GradientSteelPurple,
-  GradientTealBlue
+  GradientTealBlue,
 } from '../src';
 
 describe('<GradientDarkgreenGreen />', () => {
@@ -24,7 +24,7 @@ describe('<GradientDarkgreenGreen />', () => {
       <svg>
         <GradientDarkgreenGreen id="gradient" />
       </svg>,
-      div
+      div,
     );
   });
 });
@@ -40,7 +40,7 @@ describe('<GradientLightgreenGreen />', () => {
       <svg>
         <GradientLightgreenGreen id="gradient" />
       </svg>,
-      div
+      div,
     );
   });
 });
@@ -56,7 +56,7 @@ describe('<GradientOrangeRed />', () => {
       <svg>
         <GradientOrangeRed id="gradient" />
       </svg>,
-      div
+      div,
     );
   });
 });
@@ -72,7 +72,7 @@ describe('<GradientPinkBlue />', () => {
       <svg>
         <GradientPinkBlue id="gradient" />
       </svg>,
-      div
+      div,
     );
   });
 });
@@ -88,7 +88,7 @@ describe('<GradientPinkRed />', () => {
       <svg>
         <GradientPinkRed id="gradient" />
       </svg>,
-      div
+      div,
     );
   });
 });
@@ -104,7 +104,7 @@ describe('<GradientPurpleOrange />', () => {
       <svg>
         <GradientPurpleOrange id="gradient" />
       </svg>,
-      div
+      div,
     );
   });
 });
@@ -120,7 +120,7 @@ describe('<GradientPurpleRed />', () => {
       <svg>
         <GradientPurpleRed id="gradient" />
       </svg>,
-      div
+      div,
     );
   });
 });
@@ -136,7 +136,7 @@ describe('<GradientPurpleTeal />', () => {
       <svg>
         <GradientPurpleTeal id="gradient" />
       </svg>,
-      div
+      div,
     );
   });
 });
@@ -152,7 +152,7 @@ describe('<GradientSteelPurple />', () => {
       <svg>
         <GradientSteelPurple id="gradient" />
       </svg>,
-      div
+      div,
     );
   });
 });
@@ -168,7 +168,7 @@ describe('<GradientTealBlue />', () => {
       <svg>
         <GradientTealBlue id="gradient" />
       </svg>,
-      div
+      div,
     );
   });
 });

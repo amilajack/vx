@@ -10,7 +10,7 @@ RadialGradient.propTypes = {
   toOffset: PropTypes.string,
   toOpacity: PropTypes.number,
   rotate: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  transform: PropTypes.string
+  transform: PropTypes.string,
 };
 
 export default function RadialGradient({

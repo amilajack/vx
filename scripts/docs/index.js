@@ -1,8 +1,8 @@
-'use strict';
-
 const jetpack = require('fs-jetpack'); // filesystem
 const marked = require('marked'); // markdown parser
-const { DOCS, PACKAGES, README, ASSETS, CSS_PATH } = require('./constants.js');
+const {
+  DOCS, PACKAGES, README, ASSETS, CSS_PATH,
+} = require('./constants.js');
 
 // Stop someone from running the script from it's directory
 const ROOT = process.cwd();
@@ -30,7 +30,7 @@ function getReadmeText(pkg) {
     .dir(pkg)
     .read(README);
   if (text) return text;
-  else return ''; // don't return "undefined"
+  return ''; // don't return "undefined"
 }
 
 /**
@@ -49,10 +49,10 @@ function getDocObject(dir, info) {
  * adds css.
  */
 function prepareHTML(html, info) {
-  const cssPath = `../doc_styles.css`;
-  const nav = info.map(p => {
-    return `<li><a href="/static/docs/${p.name.replace('@vx/', 'vx-')}.html">${p.name}</a></li>`;
-  });
+  const cssPath = '../doc_styles.css';
+  const nav = info.map(
+    p => `<li><a href="/static/docs/${p.name.replace('@vx/', 'vx-')}.html">${p.name}</a></li>`,
+  );
   return `
   <html>
     <head>
@@ -98,14 +98,12 @@ function prepareHTML(html, info) {
 function readDocs() {
   const dirs = atPackagesDirectory().list(); // Get all the pkg directories
   const info = dirs
-    .map(d => {
-      return atPackagesDirectory()
-        .dir(d)
-        .read('./package.json');
-    })
+    .map(d => atPackagesDirectory()
+      .dir(d)
+      .read('./package.json'))
     .map(JSON.parse);
   const docs = [];
-  for (let pkg of dirs) {
+  for (const pkg of dirs) {
     docs.push(getDocObject(pkg, info));
   }
 

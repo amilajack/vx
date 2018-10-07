@@ -1,6 +1,8 @@
 import { scaleLinear } from 'd3-scale';
 
-export default ({ range, rangeRound, domain, nice = false, clamp = false }) => {
+export default ({
+  range, rangeRound, domain, nice = false, clamp = false,
+}) => {
   const scale = scaleLinear();
 
   if (range) scale.range(range);

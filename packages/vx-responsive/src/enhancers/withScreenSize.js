@@ -8,11 +8,11 @@ export default function withScreenSize(BaseComponent) {
 
       this.state = {
         screenWidth: null,
-        screenHeight: null
+        screenHeight: null,
       };
 
       this.handleResize = debounce(this.resize.bind(this), props.windowResizeDebounceTime).bind(
-        this
+        this,
       );
     }
 
@@ -26,12 +26,10 @@ export default function withScreenSize(BaseComponent) {
     }
 
     resize(event) {
-      this.setState((prevState, props) => {
-        return {
-          screenWidth: window.innerWidth,
-          screenHeight: window.innerHeight
-        };
-      });
+      this.setState((prevState, props) => ({
+        screenWidth: window.innerWidth,
+        screenHeight: window.innerHeight,
+      }));
     }
 
     render() {
@@ -44,7 +42,7 @@ export default function withScreenSize(BaseComponent) {
   }
 
   WrappedComponent.defaultProps = {
-    windowResizeDebounceTime: 300
+    windowResizeDebounceTime: 300,
   };
 
   return WrappedComponent;

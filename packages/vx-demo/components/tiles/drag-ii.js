@@ -9,7 +9,7 @@ export default class DragII extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: props.data || []
+      data: props.data || [],
     };
   }
 
@@ -21,35 +21,35 @@ export default class DragII extends React.Component {
         <svg width={width} height={height}>
           <LinearGradient id="stroke" from="#ff614e" to="#ffdc64" />
           <rect fill="#04002b" width={width} height={height} rx={14} />
-          {this.state.data.map((d, i) => {
-            return (
-              <LinePath
-                key={`line-${i}`}
-                stroke="url(#stroke)"
-                strokeWidth={3}
-                data={d}
-                curve={curveBasis}
-                x={d => d.x}
-                y={d => d.y}
-                xScale={d => d}
-                yScale={d => d}
-              />
-            );
-          })}
+          {this.state.data.map((d, i) => (
+            <LinePath
+              key={`line-${i}`}
+              stroke="url(#stroke)"
+              strokeWidth={3}
+              data={d}
+              curve={curveBasis}
+              x={d => d.x}
+              y={d => d.y}
+              xScale={d => d}
+              yScale={d => d}
+            />
+          ))}
           <Drag
             width={width}
             height={height}
-            resetOnStart={true}
+            resetOnStart
             onDragStart={({ x, y }) => {
               // add the new line with the starting point
               this.setState((state, props) => {
                 const newLine = [{ x, y }];
                 return {
-                  data: state.data.concat([newLine])
+                  data: state.data.concat([newLine]),
                 };
               });
             }}
-            onDragMove={({ x, y, dx, dy }) => {
+            onDragMove={({
+              x, y, dx, dy,
+            }) => {
               // add the new point to the current line
               this.setState((state, props) => {
                 const nextData = [...state.data];
@@ -60,55 +60,57 @@ export default class DragII extends React.Component {
               });
             }}
           >
-            {({ x, y, dx, dy, isDragging, dragStart, dragEnd, dragMove }) => {
-              return (
+            {({
+              x, y, dx, dy, isDragging, dragStart, dragEnd, dragMove,
+            }) => (
+              <g>
+                {/* decorate the currently drawing line */}
+                {isDragging && (
                 <g>
-                  {/* decorate the currently drawing line */}
-                  {isDragging && (
-                    <g>
-                      <rect
-                        fill="white"
-                        width={8}
-                        height={8}
-                        x={x + dx - 4}
-                        y={y + dy - 4}
-                        style={{ pointerEvents: 'none' }}
-                      />
-                      <circle
-                        cx={x}
-                        cy={y}
-                        r={4}
-                        fill="transparent"
-                        stroke="white"
-                        style={{ pointerEvents: 'none' }}
-                      />
-                    </g>
-                  )}
-                  {/* create the drawing area */}
                   <rect
+                    fill="white"
+                    width={8}
+                    height={8}
+                    x={x + dx - 4}
+                    y={y + dy - 4}
+                    style={{ pointerEvents: 'none' }}
+                  />
+                  <circle
+                    cx={x}
+                    cy={y}
+                    r={4}
                     fill="transparent"
-                    width={width}
-                    height={height}
-                    onMouseDown={dragStart}
-                    onMouseUp={dragEnd}
-                    onMouseMove={dragMove}
-                    onTouchStart={dragStart}
-                    onTouchEnd={dragEnd}
-                    onTouchMove={dragMove}
+                    stroke="white"
+                    style={{ pointerEvents: 'none' }}
                   />
                 </g>
-              );
-            }}
+                )}
+                {/* create the drawing area */}
+                <rect
+                  fill="transparent"
+                  width={width}
+                  height={height}
+                  onMouseDown={dragStart}
+                  onMouseUp={dragEnd}
+                  onMouseMove={dragMove}
+                  onTouchStart={dragStart}
+                  onTouchEnd={dragEnd}
+                  onTouchMove={dragMove}
+                />
+              </g>
+            )}
           </Drag>
         </svg>
         <div className="deets">
           <div>
-            Based on Mike Bostock's{' '}
+            Based on Mike Bostock's
+            {' '}
             <a href="https://bl.ocks.org/mbostock/f705fc55e6f26df29354">Line Drawing</a>
           </div>
         </div>
 
-        <style jsx>{`
+        <style jsx>
+          {`
           .DragII {
             display: flex;
             flex-direction: column;
@@ -128,7 +130,8 @@ export default class DragII extends React.Component {
           .deets > div {
             margin: 0.25rem;
           }
-        `}</style>
+        `}
+        </style>
       </div>
     );
   }

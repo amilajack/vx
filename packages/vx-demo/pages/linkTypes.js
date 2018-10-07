@@ -2,20 +2,19 @@ import React from 'react';
 import LinkTypes from '../components/tiles/linkTypes';
 import Show from '../components/show';
 
-export default ({}) => {
-  return (
-    <Show
-      events
-      title="Link Types"
-      component={LinkTypes}
-      margin={{
-        top: 40,
-        left: 40,
-        right: 40,
-        bottom: 40
-      }}
-    >
-      {`import React from 'react';
+export default ({}) => (
+  <Show
+    events
+    title="Link Types"
+    component={LinkTypes}
+    margin={{
+      top: 40,
+      left: 40,
+      right: 40,
+      bottom: 40,
+    }}
+  >
+    {`import React from 'react';
 import { Group } from '@vx/group';
 import { Tree } from '@vx/hierarchy';
 import { LinearGradient } from '@vx/gradient';
@@ -296,6 +295,5 @@ export default class extends React.Component {
     );
   }
 }`}
-    </Show>
-  );
-};
+  </Show>
+);

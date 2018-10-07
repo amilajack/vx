@@ -1,11 +1,11 @@
 import React from 'react';
 import cx from 'classnames';
 import { withScreenSize } from '@vx/responsive';
-import Page from '../components/page';
-import Footer from '../components/footer';
-import Bars from '../components/tiles/bars';
-import Codeblock from '../components/codeblocks/Codeblock';
-import Gallery from '../components/gallery';
+import Page from './page';
+import Footer from './footer';
+import Bars from './tiles/bars';
+import Codeblock from './codeblocks/Codeblock';
+import Gallery from './gallery';
 
 export default withScreenSize(
   ({
@@ -16,8 +16,10 @@ export default withScreenSize(
     component,
     shadow = false,
     events = false,
-    margin = { top: 0, left: 0, right: 0, bottom: 80 },
-    description
+    margin = {
+      top: 0, left: 0, right: 0, bottom: 80,
+    },
+    description,
   }) => {
     const padding = 40;
     let width = screenWidth - padding;
@@ -27,33 +29,33 @@ export default withScreenSize(
     return (
       <Page title={title}>
         <div className="container">
-          <div style={{ width: width }}>
+          <div style={{ width }}>
             <h1>{title}</h1>
           </div>
           <div
             className={cx(
               {
-                shadow: !!shadow
+                shadow: !!shadow,
               },
               title.split(' ').join('-'),
-              'chart'
+              'chart',
             )}
           >
             {React.createElement(component, {
               width,
               height,
               margin,
-              events
+              events,
             })}
           </div>
           {description && React.createElement(description, { width, height })}
           {children && (
-            <div style={{ width: width }}>
+            <div style={{ width }}>
               <h2>Code</h2>
             </div>
           )}
           {children && (
-            <div className="code" style={{ width: width }}>
+            <div className="code" style={{ width }}>
               <Codeblock>{children}</Codeblock>
             </div>
           )}
@@ -61,7 +63,8 @@ export default withScreenSize(
         <div style={{ marginTop: '40px' }}>
           <Gallery />
         </div>
-        <style jsx>{`
+        <style jsx>
+          {`
           .container {
             display: flex;
             flex-direction: column;
@@ -83,8 +86,9 @@ export default withScreenSize(
             border-radius: 14px;
             box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
           }
-        `}</style>
+        `}
+        </style>
       </Page>
     );
-  }
+  },
 );

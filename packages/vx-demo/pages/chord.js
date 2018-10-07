@@ -2,19 +2,18 @@ import React from 'react';
 import Show from '../components/show';
 import Chords from '../components/tiles/chord';
 
-export default () => {
-  return (
-    <Show
-      component={Chords}
-      title="Chords"
-      margin={{
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0
-      }}
-    >
-      {`import React from 'react';
+export default () => (
+  <Show
+    component={Chords}
+    title="Chords"
+    margin={{
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+    }}
+  >
+    {`import React from 'react';
 import { Group } from '@vx/group';
 import { LinearGradient } from '@vx/gradient';
 import { Chord, Ribbon } from '@vx/chord';
@@ -98,6 +97,5 @@ export default function Chords({
     </svg>
   );
 };`}
-    </Show>
-  );
-};
+  </Show>
+);

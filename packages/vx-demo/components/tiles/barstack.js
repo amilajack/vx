@@ -36,14 +36,14 @@ export default withTooltip(
     height,
     events = false,
     margin = {
-      top: 40
+      top: 40,
     },
     tooltipOpen,
     tooltipLeft,
     tooltipTop,
     tooltipData,
     hideTooltip,
-    showTooltip
+    showTooltip,
   }) => {
     if (width < 10) return null;
 
@@ -56,16 +56,16 @@ export default withTooltip(
       rangeRound: [0, xMax],
       domain: data.map(x),
       padding: 0.2,
-      tickFormat: () => val => formatDate(val)
+      tickFormat: () => val => formatDate(val),
     });
     const yScale = scaleLinear({
       rangeRound: [yMax, 0],
       nice: true,
-      domain: [0, max(totals)]
+      domain: [0, max(totals)],
     });
     const zScale = scaleOrdinal({
       domain: keys,
-      range: ['#6c5efb', '#c998ff', '#a44afe']
+      range: ['#6c5efb', '#c998ff', '#a44afe'],
     });
 
     let tooltipTimeout;
@@ -73,7 +73,7 @@ export default withTooltip(
     return (
       <div style={{ position: 'relative' }}>
         <svg width={width} height={height}>
-          <rect x={0} y={0} width={width} height={height} fill={`#eaedff`} rx={14} />
+          <rect x={0} y={0} width={width} height={height} fill="#eaedff" rx={14} />
           <Grid
             top={margin.top}
             left={margin.left}
@@ -81,7 +81,7 @@ export default withTooltip(
             yScale={yScale}
             width={xMax}
             height={yMax}
-            stroke={'black'}
+            stroke="black"
             strokeOpacity={0.1}
             xOffset={xScale.bandwidth() / 2}
           />
@@ -94,23 +94,23 @@ export default withTooltip(
             xScale={xScale}
             yScale={yScale}
             zScale={zScale}
-            onClick={data => event => {
+            onClick={data => (event) => {
               if (!events) return;
               alert(`clicked: ${JSON.stringify(data)}`);
             }}
-            onMouseLeave={data => event => {
+            onMouseLeave={data => (event) => {
               tooltipTimeout = setTimeout(() => {
                 hideTooltip();
               }, 300);
             }}
-            onMouseMove={data => event => {
+            onMouseMove={data => (event) => {
               if (tooltipTimeout) clearTimeout(tooltipTimeout);
               const top = event.clientY - margin.top - data.height;
               const left = xScale(data.x) + data.width + data.paddingInner * data.step / 2;
               showTooltip({
                 tooltipData: data,
                 tooltipTop: top,
-                tooltipLeft: left
+                tooltipLeft: left,
               });
             }}
           />
@@ -122,7 +122,7 @@ export default withTooltip(
             tickLabelProps={(value, index) => ({
               fill: '#a44afe',
               fontSize: 11,
-              textAnchor: 'middle'
+              textAnchor: 'middle',
             })}
           />
         </svg>
@@ -133,7 +133,7 @@ export default withTooltip(
             width: '100%',
             display: 'flex',
             justifyContent: 'center',
-            fontSize: '14px'
+            fontSize: '14px',
           }}
         >
           <LegendOrdinal scale={zScale} direction="row" labelMargin="0 15px 0 0" />
@@ -145,13 +145,16 @@ export default withTooltip(
             style={{
               minWidth: 60,
               backgroundColor: 'rgba(0,0,0,0.9)',
-              color: 'white'
+              color: 'white',
             }}
           >
             <div style={{ color: zScale(tooltipData.key) }}>
               <strong>{tooltipData.key}</strong>
             </div>
-            <div>{tooltipData.data[tooltipData.key]}℉</div>
+            <div>
+              {tooltipData.data[tooltipData.key]}
+℉
+            </div>
             <div>
               <small>{tooltipData.xFormatted}</small>
             </div>
@@ -159,5 +162,5 @@ export default withTooltip(
         )}
       </div>
     );
-  }
+  },
 );

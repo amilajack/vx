@@ -9,8 +9,8 @@ const dataSample = {
   links: [
     { source: nodes[0], target: nodes[1] },
     { source: nodes[1], target: nodes[2] },
-    { source: nodes[2], target: nodes[0] }
-  ]
+    { source: nodes[2], target: nodes[0] },
+  ],
 };
 
 export default ({ width, height }) => {

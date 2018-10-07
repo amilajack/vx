@@ -1,6 +1,6 @@
+import cx from 'classnames';
 import Meta from './meta';
 import Nav from './nav';
-import cx from 'classnames';
 
 export default ({ children, title, className }) => (
   <div className={cx('main', className)}>
@@ -9,7 +9,8 @@ export default ({ children, title, className }) => (
       <Nav />
     </div>
     <div className="page-content">{children}</div>
-    <style jsx>{`
+    <style jsx>
+      {`
       .main {
         width: 100vw;
         margin: 0 auto;
@@ -27,6 +28,7 @@ export default ({ children, title, className }) => (
       .nav-container {
         background: #ffffff;
       }
-    `}</style>
+    `}
+    </style>
   </div>
 );

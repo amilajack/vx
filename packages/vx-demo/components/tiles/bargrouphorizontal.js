@@ -25,8 +25,8 @@ export default ({
     top: 20,
     left: 50,
     right: 10,
-    bottom: 0
-  }
+    bottom: 0,
+  },
 }) => {
   if (width < 10) return null;
 
@@ -39,28 +39,26 @@ export default ({
     rangeRound: [0, yMax],
     domain: data.map(y0),
     padding: 0.2,
-    tickFormat: () => val => formatDate(val)
+    tickFormat: () => val => formatDate(val),
   });
 
   const y1Scale = scaleBand({
     rangeRound: [0, y0Scale.bandwidth()],
     domain: keys,
-    padding: 0.1
+    padding: 0.1,
   });
 
   const xScale = scaleLinear({
     rangeRound: [xMax, 0],
     domain: [
       0,
-      max(data, d => {
-        return max(keys, key => d[key]);
-      })
-    ]
+      max(data, d => max(keys, key => d[key])),
+    ],
   });
 
   const zScale = scaleOrdinal({
     domain: keys,
-    range: ['#aeeef8', '#e5fd3d', '#9caff6']
+    range: ['#aeeef8', '#e5fd3d', '#9caff6'],
   });
 
   return (
@@ -77,7 +75,7 @@ export default ({
           xScale={xScale}
           zScale={zScale}
           rx={4}
-          onClick={data => event => {
+          onClick={data => (event) => {
             if (!events) return;
             alert(`clicked: ${JSON.stringify(data)}`);
           }}
@@ -91,7 +89,7 @@ export default ({
             fill: '#e5fd3d',
             fontSize: 11,
             textAnchor: 'end',
-            dy: '0.33em'
+            dy: '0.33em',
           })}
         />
       </Group>

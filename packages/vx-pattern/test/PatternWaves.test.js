@@ -15,7 +15,7 @@ describe('<PatternWaves />', () => {
     const wrapper = mount(<PatternWaves width={4} height={4} />);
     expect(console.error).toBeCalled();
     expect(console.error.mock.calls[0][0]).toEqual(
-      'Warning: Failed prop type: The prop `id` is marked as required in `PatternWaves`, but its value is `undefined`.\n    in PatternWaves'
+      'Warning: Failed prop type: The prop `id` is marked as required in `PatternWaves`, but its value is `undefined`.\n    in PatternWaves',
     );
   });
 
@@ -23,7 +23,7 @@ describe('<PatternWaves />', () => {
     const wrapper = mount(<PatternWaves id="test" height={4} />);
     expect(console.error).toBeCalled();
     expect(console.error.mock.calls[0][0]).toEqual(
-      'Warning: Failed prop type: The prop `width` is marked as required in `PatternWaves`, but its value is `undefined`.\n    in PatternWaves'
+      'Warning: Failed prop type: The prop `width` is marked as required in `PatternWaves`, but its value is `undefined`.\n    in PatternWaves',
     );
   });
 
@@ -31,7 +31,7 @@ describe('<PatternWaves />', () => {
     const wrapper = mount(<PatternWaves id="test" width={4} />);
     expect(console.error).toBeCalled();
     expect(console.error.mock.calls[0][0]).toEqual(
-      'Warning: Failed prop type: The prop `height` is marked as required in `PatternWaves`, but its value is `undefined`.\n    in PatternWaves'
+      'Warning: Failed prop type: The prop `height` is marked as required in `PatternWaves`, but its value is `undefined`.\n    in PatternWaves',
     );
   });
 });

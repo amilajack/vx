@@ -8,9 +8,9 @@
     "docs": "node ./scripts/docs/index.js",
     "prepare-release": "git checkout master && git pull --rebase origin master && npm run docs && lerna updated",
     "release": "npm run prepare-release && lerna publish --exact",
-    "lint": "eslint \"{packages,scripts}/**/*.js\"",
-    "lint:fix": "eslint \"{packages,scripts}/**/*.js\" --fix",
-    "format": "prettier-eslint \"{packages,scripts}/**/*.js\" --write",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier-eslint . --write",
     "precommit": "lint-staged"
   },
   "eslintConfig": {

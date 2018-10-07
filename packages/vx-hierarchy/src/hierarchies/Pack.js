@@ -7,7 +7,7 @@ import DefaultNode from '../HierarchyDefaultNode';
 
 Pack.propTypes = {
   root: PropTypes.object.isRequired,
-  children: PropTypes.func
+  children: PropTypes.func,
 };
 
 export default function Pack({
@@ -29,7 +29,7 @@ export default function Pack({
 
   const data = pack(root);
 
-  if (!!children) {
+  if (children) {
     return (
       <Group top={top} left={left} className={cx('vx-pack', className)}>
         {children({ data })}
@@ -39,12 +39,10 @@ export default function Pack({
 
   return (
     <Group top={top} left={left} className={cx('vx-pack', className)}>
-      {nodeComponent &&
-        data.descendants().map((node, i) => {
-          return (
-            <Group key={`pack-node-${i}`}>{React.createElement(nodeComponent, { node })}</Group>
-          );
-        })}
+      {nodeComponent
+        && data.descendants().map((node, i) => (
+          <Group key={`pack-node-${i}`}>{React.createElement(nodeComponent, { node })}</Group>
+        ))}
     </Group>
   );
 }

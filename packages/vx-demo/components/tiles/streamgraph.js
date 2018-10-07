@@ -25,19 +25,25 @@ const bumpsPerLayer = 10;
 const keys = range(numLayers);
 
 function bumps(n, m) {
-  var a = [],
-    i;
+  const a = [];
+
+
+  let i;
   for (i = 0; i < n; ++i) a[i] = 0;
   for (i = 0; i < m; ++i) bump(a, n);
   return a;
 }
 
 function bump(a, n) {
-  var x = 1 / (0.1 + Math.random()),
-    y = 2 * Math.random() - 0.5,
-    z = 10 / (0.1 + Math.random());
-  for (var i = 0; i < n; i++) {
-    var w = (i / n - y) * z;
+  const x = 1 / (0.1 + Math.random());
+
+
+  const y = 2 * Math.random() - 0.5;
+
+
+  const z = 10 / (0.1 + Math.random());
+  for (let i = 0; i < n; i++) {
+    const w = (i / n - y) * z;
     a[i] += x * Math.exp(-w * w);
   }
 }
@@ -49,8 +55,8 @@ export default class Streamgraph extends React.Component {
       height,
       events = false,
       margin = {
-        top: 40
-      }
+        top: 40,
+      },
     } = this.props;
     if (width < 10) return null;
 
@@ -58,19 +64,19 @@ export default class Streamgraph extends React.Component {
 
     const xScale = scaleLinear({
       range: [0, width],
-      domain: [0, samplesPerLayer - 1]
+      domain: [0, samplesPerLayer - 1],
     });
     const yScale = scaleLinear({
       range: [height, 0],
-      domain: [-30, 50]
+      domain: [-30, 50],
     });
     const zScale = scaleOrdinal({
       domain: keys,
-      range: ['#ffc409', '#f14702', '#262d97', 'white', '#036ecd', '#9ecadd', '#51666e']
+      range: ['#ffc409', '#f14702', '#262d97', 'white', '#036ecd', '#9ecadd', '#51666e'],
     });
     const patternScale = scaleOrdinal({
       domain: keys,
-      range: ['mustard', 'cherry', 'navy', 'circles', 'circles', 'circles', 'circles']
+      range: ['mustard', 'cherry', 'navy', 'circles', 'circles', 'circles', 'circles'],
     });
 
     return (
@@ -95,7 +101,7 @@ export default class Streamgraph extends React.Component {
           complement
         />
         <g onClick={event => this.forceUpdate()} onTouchStart={event => this.forceUpdate()}>
-          <rect x={0} y={0} width={width} height={height} fill={`#ffdede`} rx={14} />
+          <rect x={0} y={0} width={width} height={height} fill="#ffdede" rx={14} />
           <Stack
             data={layers}
             keys={keys}
@@ -103,18 +109,14 @@ export default class Streamgraph extends React.Component {
             x={(d, i) => xScale(i)}
             y0={d => yScale(d[0])}
             y1={d => yScale(d[1])}
-            render={({ seriesData, path }) => {
-              return seriesData.map((series, i) => {
-                return (
-                  <g key={`series-${series.key}`}>
-                    <path d={path(series)} fill={zScale(series.key)} />
-                    {patternScale(series.key) !== 'circles' && (
-                      <path d={path(series)} fill={`url(#${patternScale(series.key)})`} />
-                    )}
-                  </g>
-                );
-              });
-            }}
+            render={({ seriesData, path }) => seriesData.map((series, i) => (
+              <g key={`series-${series.key}`}>
+                <path d={path(series)} fill={zScale(series.key)} />
+                {patternScale(series.key) !== 'circles' && (
+                <path d={path(series)} fill={`url(#${patternScale(series.key)})`} />
+                )}
+              </g>
+            ))}
           />
         </g>
       </svg>

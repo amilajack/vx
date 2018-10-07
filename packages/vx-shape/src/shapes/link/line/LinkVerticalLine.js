@@ -4,8 +4,10 @@ import PropTypes from 'prop-types';
 import { path as d3Path } from 'd3-path';
 import additionalProps from '../../../util/additionalProps';
 
-export function pathVerticalLine({ source, target, x, y }) {
-  return data => {
+export function pathVerticalLine({
+  source, target, x, y,
+}) {
+  return (data) => {
     const sourceData = source(data);
     const targetData = target(data);
 
@@ -28,7 +30,7 @@ LinkVerticalLine.propTypes = {
   x: PropTypes.func,
   y: PropTypes.func,
   source: PropTypes.func,
-  target: PropTypes.func
+  target: PropTypes.func,
 };
 
 export default function LinkVerticalLine({
@@ -42,7 +44,13 @@ export default function LinkVerticalLine({
   target = d => d.target,
   ...restProps
 }) {
-  path = path || pathVerticalLine({ source, target, x, y });
+  path = path
+    || pathVerticalLine({
+      source,
+      target,
+      x,
+      y,
+    });
   return (
     <path
       ref={innerRef}

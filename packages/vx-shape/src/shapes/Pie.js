@@ -44,24 +44,24 @@ export default function Pie({
       ...additionalProps(restProps, {
         ...arc,
         index,
-        centroid: centroid ? path.centroid(arc) : undefined
-      })
+        centroid: centroid ? path.centroid(arc) : undefined,
+      }),
     }),
-    generateCentroid: arc => centroid && centroid(path.centroid(arc), arc)
+    generateCentroid: arc => centroid && centroid(path.centroid(arc), arc),
   };
   return (
     <Group className="vx-pie-arcs-group" top={top} left={left}>
       {children
         ? children(renderFunctionArg)
         : arcs.map((arc, i) => {
-            const pathProps = renderFunctionArg.generatePathProps(arc, i);
-            return (
-              <g key={`pie-arc-${i}`}>
-                <path {...pathProps} />
-                {renderFunctionArg.generateCentroid(arc)}
-              </g>
-            );
-          })}
+          const pathProps = renderFunctionArg.generatePathProps(arc, i);
+          return (
+            <g key={`pie-arc-${i}`}>
+              <path {...pathProps} />
+              {renderFunctionArg.generateCentroid(arc)}
+            </g>
+          );
+        })}
     </Group>
   );
 }

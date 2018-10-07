@@ -4,8 +4,10 @@ import PropTypes from 'prop-types';
 import { path as d3Path } from 'd3-path';
 import additionalProps from '../../../util/additionalProps';
 
-export function pathHorizontalStep({ source, target, x, y, percent }) {
-  return data => {
+export function pathHorizontalStep({
+  source, target, x, y, percent,
+}) {
+  return (data) => {
     const sourceData = source(data);
     const targetData = target(data);
 
@@ -31,7 +33,7 @@ LinkHorizontalStep.propTypes = {
   y: PropTypes.func,
   source: PropTypes.func,
   target: PropTypes.func,
-  path: PropTypes.func
+  path: PropTypes.func,
 };
 
 export default function LinkHorizontalStep({
@@ -46,7 +48,14 @@ export default function LinkHorizontalStep({
   target = d => d.target,
   ...restProps
 }) {
-  path = path || pathHorizontalStep({ source, target, x, y, percent });
+  path = path
+    || pathHorizontalStep({
+      source,
+      target,
+      x,
+      y,
+      percent,
+    });
   return (
     <path
       ref={innerRef}

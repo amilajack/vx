@@ -1,7 +1,8 @@
 export default () => (
   <span>
     vx
-    <style jsx>{`
+    <style jsx>
+      {`
       span {
         border: 1px solid #fff;
         display: inline-block;
@@ -10,6 +11,7 @@ export default () => (
         font-size: 11px;
         padding: 5px 8px;
       }
-    `}</style>
+    `}
+    </style>
   </span>
 );

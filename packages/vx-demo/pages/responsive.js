@@ -2,10 +2,9 @@ import React from 'react';
 import Show from '../components/show';
 import Responsive from '../components/tiles/responsive';
 
-export default () => {
-  return (
-    <Show component={Responsive} title="Responsive">
-      {`import React from 'react';
+export default () => (
+  <Show component={Responsive} title="Responsive">
+    {`import React from 'react';
 import { ParentSize } from '@vx/responsive';
 import Lines from './lines';
 
@@ -103,6 +102,5 @@ export default class App extends React.Component {
     );
   }
 }`}
-    </Show>
-  );
-};
+  </Show>
+);

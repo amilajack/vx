@@ -15,8 +15,8 @@ function pathForOrientation({ height, orientation }) {
       path = `M 0,${height / 2} l ${height},0`;
       break;
     case Orientation.diagonal:
-      path = `M 0,${height} l ${height},${-height} M ${-height / 4},${height / 4} l ${height /
-        2},${-height / 2}
+      path = `M 0,${height} l ${height},${-height} M ${-height / 4},${height / 4} l ${height
+        / 2},${-height / 2}
              M ${3 / 4 * height},${5 / 4 * height} l ${height / 2},${-height / 2}`;
       break;
     default:
@@ -38,7 +38,7 @@ export default function PatternLines({
   shapeRendering = 'auto',
   orientation = ['vertical'],
   background,
-  className
+  className,
 }) {
   if (!Array.isArray(orientation)) orientation = [orientation];
 
@@ -52,20 +52,18 @@ export default function PatternLines({
           fill={background}
         />
       )}
-      {orientation.map((o, i) => {
-        return (
-          <path
-            key={`vx-${id}-line-${o}-${i}`}
-            className={cx('vx-pattern-line', className)}
-            d={pathForOrientation({ orientation: o, height })}
-            stroke={stroke}
-            strokeWidth={strokeWidth}
-            strokeDasharray={strokeDasharray}
-            strokeLinecap={strokeLinecap}
-            shapeRendering={shapeRendering}
-          />
-        );
-      })}
+      {orientation.map((o, i) => (
+        <path
+          key={`vx-${id}-line-${o}-${i}`}
+          className={cx('vx-pattern-line', className)}
+          d={pathForOrientation({ orientation: o, height })}
+          stroke={stroke}
+          strokeWidth={strokeWidth}
+          strokeDasharray={strokeDasharray}
+          strokeLinecap={strokeLinecap}
+          shapeRendering={shapeRendering}
+        />
+      ))}
     </Pattern>
   );
 }
@@ -78,5 +76,5 @@ PatternLines.propTypes = {
   stroke: PropTypes.string.isRequired,
   strokeWidth: PropTypes.number.isRequired,
   strokeDasharray: PropTypes.string,
-  className: PropTypes.string
+  className: PropTypes.string,
 };

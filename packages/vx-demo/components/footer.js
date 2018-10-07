@@ -1,15 +1,17 @@
 import React from 'react';
 
-export default () => {
-  return (
-    <div className="footer">
-      <div>
-        <img src="static/favicon.ico" />
-      </div>
-      <div>
-        made by <a href="https://twitter.com/hshoff">@hshoff</a>
-      </div>
-      <style jsx>{`
+export default () => (
+  <div className="footer">
+    <div>
+      <img src="static/favicon.ico" />
+    </div>
+    <div>
+        made by
+      {' '}
+      <a href="https://twitter.com/hshoff">@hshoff</a>
+    </div>
+    <style jsx>
+      {`
         .footer {
           text-align: center;
           margin-bottom: 1rem;
@@ -18,7 +20,7 @@ export default () => {
           flex-direction: column;
           font-size: 14px;
         }
-      `}</style>
-    </div>
-  );
-};
+      `}
+    </style>
+  </div>
+);

@@ -7,9 +7,9 @@ describe('<Bar />', () => {
     expect(Bar).toBeDefined();
   });
 
-  test('it should expose its ref via an innerRef prop', done => {
+  test('it should expose its ref via an innerRef prop', (done) => {
     const node = document.createElement('div');
-    const refCallback = n => {
+    const refCallback = (n) => {
       expect(n.tagName).toEqual('RECT');
       done();
     };

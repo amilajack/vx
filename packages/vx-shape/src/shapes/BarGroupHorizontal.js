@@ -22,12 +22,11 @@ export default function BarGroupHorizontal({
   const format = y0Scale.tickFormat ? y0Scale.tickFormat() : d => d;
   return (
     <Group className={cx('vx-bar-group-horizontal', className)} top={top} left={left}>
-      {data &&
-        data.map((d, i) => {
-          return (
-            <Group key={`bar-group-${i}-${y0(d)}`} top={y0Scale(y0(d))}>
-              {keys &&
-                keys.map((key, i) => {
+      {data
+        && data.map((d, i) => (
+          <Group key={`bar-group-${i}-${y0(d)}`} top={y0Scale(y0(d))}>
+            {keys
+                && keys.map((key, i) => {
                   const value = d[key];
                   return (
                     <Bar
@@ -41,15 +40,14 @@ export default function BarGroupHorizontal({
                         key,
                         value,
                         y: format(y0(d)),
-                        data: d
+                        data: d,
                       }}
                       {...restProps}
                     />
                   );
                 })}
-            </Group>
-          );
-        })}
+          </Group>
+        ))}
     </Group>
   );
 }
@@ -65,5 +63,5 @@ BarGroupHorizontal.propTypes = {
   width: PropTypes.number.isRequired,
   className: PropTypes.string,
   top: PropTypes.number,
-  left: PropTypes.number
+  left: PropTypes.number,
 };

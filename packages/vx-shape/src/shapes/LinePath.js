@@ -16,7 +16,7 @@ LinePath.propTypes = {
   stroke: PropTypes.string,
   strokeWidth: PropTypes.number,
   glyph: PropTypes.func,
-  curve: PropTypes.func
+  curve: PropTypes.func,
 };
 
 export default function LinePath({

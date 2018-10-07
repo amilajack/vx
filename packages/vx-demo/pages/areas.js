@@ -2,19 +2,18 @@ import React from 'react';
 import Show from '../components/show';
 import Areas from '../components/tiles/area';
 
-export default () => {
-  return (
-    <Show
-      component={Areas}
-      title="Areas"
-      margin={{
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0
-      }}
-    >
-      {`import React from 'react';
+export default () => (
+  <Show
+    component={Areas}
+    title="Areas"
+    margin={{
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+    }}
+  >
+    {`import React from 'react';
 import { AreaClosed, Line, Bar } from '@vx/shape';
 import { appleStock } from '@vx/mock-data';
 import { curveMonotoneX } from '@vx/curve';
@@ -237,6 +236,5 @@ class Area extends React.Component {
 }
 
 export default withTooltip(Area);`}
-    </Show>
-  );
-};
+  </Show>
+);

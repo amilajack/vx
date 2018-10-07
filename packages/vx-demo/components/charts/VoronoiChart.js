@@ -17,7 +17,7 @@ const data = Array(200)
     y: Math.random(),
     id: Math.random()
       .toString(36)
-      .slice(2)
+      .slice(2),
   }));
 
 class VoronoiChart extends React.PureComponent {
@@ -28,19 +28,19 @@ class VoronoiChart extends React.PureComponent {
 
     const xScale = scaleLinear({
       domain: extent(data, d => d.x),
-      range: [0, innerWidth]
+      range: [0, innerWidth],
     });
 
     const yScale = scaleLinear({
       domain: extent(data, d => d.y),
-      range: [innerHeight, 0]
+      range: [innerHeight, 0],
     });
 
     const voronoiDiagram = voronoi({
       x: d => xScale(d.x),
       y: d => yScale(d.y),
       width: innerWidth,
-      height: innerHeight
+      height: innerHeight,
     })(data);
 
     return {
@@ -50,7 +50,7 @@ class VoronoiChart extends React.PureComponent {
       yScale,
       voronoiDiagram,
       innerWidth,
-      innerHeight
+      innerHeight,
     };
   }
 
@@ -73,7 +73,7 @@ class VoronoiChart extends React.PureComponent {
     if (closest) {
       const neighbors = {};
       const cell = voronoiDiagram.cells[closest.index];
-      cell.halfedges.forEach(index => {
+      cell.halfedges.forEach((index) => {
         debugger;
         const edge = voronoiDiagram.edges[index];
         const { left, right } = edge;
@@ -94,7 +94,7 @@ class VoronoiChart extends React.PureComponent {
       xScale,
       yScale,
       selected,
-      neighbors
+      neighbors,
     } = this.state;
 
     const polygons = voronoiDiagram.polygons();
@@ -103,7 +103,7 @@ class VoronoiChart extends React.PureComponent {
       <svg
         width={width}
         height={height}
-        ref={ref => {
+        ref={(ref) => {
           this.svg = ref;
         }}
       >
@@ -123,10 +123,9 @@ class VoronoiChart extends React.PureComponent {
             <VoronoiPolygon
               key={`polygon-${polygon.data.id}`}
               polygon={polygon}
-              fill={d =>
-                selected && (d.id === selected.data.id || neighbors[d.id])
-                  ? 'url(#voronoi_orange_red)'
-                  : 'url(#voronoi_pink_red)'
+              fill={d => (selected && (d.id === selected.data.id || neighbors[d.id])
+                ? 'url(#voronoi_orange_red)'
+                : 'url(#voronoi_pink_red)')
               }
               fillOpacity={d => (neighbors && neighbors[d.id] ? 0.4 : 1)}
               stroke="#fff"
@@ -149,6 +148,8 @@ class VoronoiChart extends React.PureComponent {
   }
 }
 
-export default ({ width, height, margin, events }) => (
+export default ({
+  width, height, margin, events,
+}) => (
   <VoronoiChart width={width} height={height} events={events} margin={margin} />
 );

@@ -15,13 +15,13 @@ export default ({
     top: 0,
     left: 30,
     right: 40,
-    bottom: 80
-  }
+    bottom: 80,
+  },
 }) => {
   if (width < 10) return null;
   const color = scaleLinear({
     domain: [0, Math.max(...shakespeare.map(d => d.size || 0))],
-    range: ['#0373d9', '#00ff70']
+    range: ['#0373d9', '#00ff70'],
   });
   const nodes = stratify()
     .id(d => d.id)
@@ -36,40 +36,38 @@ export default ({
         root={data}
         size={[width, height - margin.top - margin.bottom]}
         tile={treemapSquarify}
-        round={true}
+        round
       >
-        {({ data }) => {
-          return (
-            <Group>
-              {data
-                .descendants()
-                .reverse()
-                .map((node, i) => (
-                  <Group top={node.y0} left={node.x0} key={`node-${i}`}>
-                    {node.depth == 1 && (
-                      <rect
-                        id={`rect-${i}`}
-                        width={node.x1 - node.x0}
-                        height={node.y1 - node.y0}
-                        fill={'transparent'}
-                        stroke={'#3436b8'}
-                        strokeWidth={4}
-                      />
-                    )}
-                    {node.depth > 2 && (
-                      <rect
-                        id={`rect-${i}`}
-                        width={node.x1 - node.x0}
-                        height={node.y1 - node.y0}
-                        fill={color(node.value)}
-                        stroke={'#3436b8'}
-                      />
-                    )}
-                  </Group>
-                ))}
-            </Group>
-          );
-        }}
+        {({ data }) => (
+          <Group>
+            {data
+              .descendants()
+              .reverse()
+              .map((node, i) => (
+                <Group top={node.y0} left={node.x0} key={`node-${i}`}>
+                  {node.depth == 1 && (
+                  <rect
+                    id={`rect-${i}`}
+                    width={node.x1 - node.x0}
+                    height={node.y1 - node.y0}
+                    fill="transparent"
+                    stroke="#3436b8"
+                    strokeWidth={4}
+                  />
+                  )}
+                  {node.depth > 2 && (
+                  <rect
+                    id={`rect-${i}`}
+                    width={node.x1 - node.x0}
+                    height={node.y1 - node.y0}
+                    fill={color(node.value)}
+                    stroke="#3436b8"
+                  />
+                  )}
+                </Group>
+              ))}
+          </Group>
+        )}
       </Treemap>
     </svg>
   );

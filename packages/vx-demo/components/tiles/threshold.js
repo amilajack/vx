@@ -18,7 +18,9 @@ const sf = d => d['San Francisco'];
 
 export default class Thresholds extends React.Component {
   render() {
-    const { width, height, margin, events } = this.props;
+    const {
+      width, height, margin, events,
+    } = this.props;
     if (width < 10) return null;
 
     // bounds
@@ -28,15 +30,15 @@ export default class Thresholds extends React.Component {
     // scales
     const xScale = scaleTime({
       range: [0, xMax],
-      domain: [Math.min(...data.map(date)), Math.max(...data.map(date))]
+      domain: [Math.min(...data.map(date)), Math.max(...data.map(date))],
     });
     const yScale = scaleLinear({
       range: [yMax, 0],
       domain: [
         Math.min(...data.map(d => Math.min(ny(d), sf(d)))),
-        Math.max(...data.map(d => Math.max(ny(d), sf(d))))
+        Math.max(...data.map(d => Math.max(ny(d), sf(d)))),
       ],
-      nice: true
+      nice: true,
     });
 
     return (
@@ -64,11 +66,11 @@ export default class Thresholds extends React.Component {
               curve={curveBasis}
               belowAreaProps={{
                 fill: 'red',
-                fillOpacity: 0.4
+                fillOpacity: 0.4,
               }}
               aboveAreaProps={{
                 fill: 'green',
-                fillOpacity: 0.4
+                fillOpacity: 0.4,
               }}
             />
             <LinePath

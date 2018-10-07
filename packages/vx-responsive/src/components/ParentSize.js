@@ -6,42 +6,53 @@ import ResizeObserver from 'resize-observer-polyfill';
 export default class ParentSize extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { width: 0, height: 0, top: 0, left: 0 };
+    this.state = {
+      width: 0, height: 0, top: 0, left: 0,
+    };
     this.resize = debounce(this.resize.bind(this), props.debounceTime);
     this.setTarget = this.setTarget.bind(this);
     this.animationFrameID = null;
   }
+
   componentDidMount() {
     this.ro = new ResizeObserver((entries, observer) => {
       for (const entry of entries) {
-        const { left, top, width, height } = entry.contentRect;
+        const {
+          left, top, width, height,
+        } = entry.contentRect;
         this.animationFrameID = window.requestAnimationFrame(() => {
           this.resize({
             width,
             height,
             top,
-            left
+            left,
           });
         });
       }
     });
     this.ro.observe(this.target);
   }
+
   componentWillUnmount() {
     window.cancelAnimationFrame(this.animationFrameID);
     this.ro.disconnect();
   }
-  resize({ width, height, top, left }) {
+
+  resize({
+    width, height, top, left,
+  }) {
     this.setState(() => ({
       width,
       height,
       top,
-      left
+      left,
     }));
   }
+
   setTarget(ref) {
     this.target = ref;
   }
+
   render() {
     const { className, children } = this.props;
     return (
@@ -49,7 +60,7 @@ export default class ParentSize extends React.Component {
         {children({
           ...this.state,
           ref: this.target,
-          resize: this.resize
+          resize: this.resize,
         })}
       </div>
     );
@@ -57,11 +68,11 @@ export default class ParentSize extends React.Component {
 }
 
 ParentSize.defaultProps = {
-  debounceTime: 300
+  debounceTime: 300,
 };
 
 ParentSize.propTypes = {
   className: PropTypes.string,
   children: PropTypes.func.isRequired,
-  debounceTime: PropTypes.number
+  debounceTime: PropTypes.number,
 };

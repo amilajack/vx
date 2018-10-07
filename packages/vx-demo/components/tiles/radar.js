@@ -9,19 +9,17 @@ import { max, min } from 'd3-array';
 const ANG = 360;
 
 const data = letterFrequency.slice(2, 12);
-const calcAxis = length => {
+const calcAxis = (length) => {
   if (!length) return [];
-  else return new Array(length + 1).fill(0).map((v, i) => ({ angle: i * (ANG / length) }));
+  return new Array(length + 1).fill(0).map((v, i) => ({ angle: i * (ANG / length) }));
 };
 
 function calcPoints(length, radius) {
   const step = Math.PI * 2 / length;
-  return new Array(length).fill(0).map((v, i) => {
-    return {
-      x: radius * Math.sin(i * step),
-      y: radius * Math.cos(i * step)
-    };
-  });
+  return new Array(length).fill(0).map((v, i) => ({
+    x: radius * Math.sin(i * step),
+    y: radius * Math.cos(i * step),
+  }));
 }
 
 function calcCoordinates(data, scale, access) {
@@ -43,8 +41,10 @@ export default ({
   width,
   height,
   events = false,
-  margin = { top: 40, left: 80, right: 80, bottom: 80 },
-  levels = 5
+  margin = {
+    top: 40, left: 80, right: 80, bottom: 80,
+  },
+  levels = 5,
 }) => {
   if (width < 10) return null;
 
@@ -61,12 +61,12 @@ export default ({
 
   const rScale = scaleLinear({
     range: [0, Math.PI * 2],
-    domain: [ANG, 0]
+    domain: [ANG, 0],
   });
 
   const yScale = scaleLinear({
     range: [0, radius],
-    domain: [0, max(data, y)]
+    domain: [0, max(data, y)],
   });
 
   const polyPoints = calcCoordinates(data, yScale, y);

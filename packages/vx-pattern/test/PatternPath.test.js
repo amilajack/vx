@@ -15,7 +15,7 @@ describe('<PatternPath />', () => {
     const wrapper = mount(<PatternPath width={4} height={4} />);
     expect(console.error).toBeCalled();
     expect(console.error.mock.calls[0][0]).toEqual(
-      'Warning: Failed prop type: The prop `id` is marked as required in `PatternPath`, but its value is `undefined`.\n    in PatternPath'
+      'Warning: Failed prop type: The prop `id` is marked as required in `PatternPath`, but its value is `undefined`.\n    in PatternPath',
     );
   });
 
@@ -23,7 +23,7 @@ describe('<PatternPath />', () => {
     const wrapper = mount(<PatternPath id="test" height={4} />);
     expect(console.error).toBeCalled();
     expect(console.error.mock.calls[0][0]).toEqual(
-      'Warning: Failed prop type: The prop `width` is marked as required in `PatternPath`, but its value is `undefined`.\n    in PatternPath'
+      'Warning: Failed prop type: The prop `width` is marked as required in `PatternPath`, but its value is `undefined`.\n    in PatternPath',
     );
   });
 
@@ -31,7 +31,7 @@ describe('<PatternPath />', () => {
     const wrapper = mount(<PatternPath id="test" width={4} />);
     expect(console.error).toBeCalled();
     expect(console.error.mock.calls[0][0]).toEqual(
-      'Warning: Failed prop type: The prop `height` is marked as required in `PatternPath`, but its value is `undefined`.\n    in PatternPath'
+      'Warning: Failed prop type: The prop `height` is marked as required in `PatternPath`, but its value is `undefined`.\n    in PatternPath',
     );
   });
 

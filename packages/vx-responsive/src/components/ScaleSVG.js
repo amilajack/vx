@@ -6,7 +6,7 @@ export default function ResponsiveSVG({
   height,
   xOrigin = 0,
   yOrigin = 0,
-  preserveAspectRatio = 'xMinYMin meet'
+  preserveAspectRatio = 'xMinYMin meet',
 }) {
   return (
     <div
@@ -15,7 +15,7 @@ export default function ResponsiveSVG({
         position: 'relative',
         width: '100%',
         verticalAlign: 'top',
-        overflow: 'hidden'
+        overflow: 'hidden',
       }}
     >
       <svg

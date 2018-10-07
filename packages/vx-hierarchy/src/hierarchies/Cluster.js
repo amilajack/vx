@@ -8,7 +8,7 @@ import DefaultNode from '../HierarchyDefaultNode';
 
 Cluster.propTypes = {
   root: PropTypes.object.isRequired,
-  children: PropTypes.func
+  children: PropTypes.func,
 };
 
 export default function Cluster({
@@ -31,7 +31,7 @@ export default function Cluster({
 
   const data = cluster(root);
 
-  if (!!children) {
+  if (children) {
     return (
       <Group top={top} left={left} className={cx('vx-cluster', className)}>
         {children({ data })}
@@ -41,18 +41,14 @@ export default function Cluster({
 
   return (
     <Group top={top} left={left} className={cx('vx-cluster', className)}>
-      {linkComponent &&
-        data.links().map((link, i) => {
-          return (
-            <Group key={`cluster-link-${i}`}>{React.createElement(linkComponent, { link })}</Group>
-          );
-        })}
-      {nodeComponent &&
-        data.descendants().map((node, i) => {
-          return (
-            <Group key={`cluster-node-${i}`}>{React.createElement(nodeComponent, { node })}</Group>
-          );
-        })}
+      {linkComponent
+        && data.links().map((link, i) => (
+          <Group key={`cluster-link-${i}`}>{React.createElement(linkComponent, { link })}</Group>
+        ))}
+      {nodeComponent
+        && data.descendants().map((node, i) => (
+          <Group key={`cluster-node-${i}`}>{React.createElement(nodeComponent, { node })}</Group>
+        ))}
     </Group>
   );
 }

@@ -2,10 +2,9 @@ import React from 'react';
 import Show from '../components/show';
 import Treemap from '../components/tiles/treemap';
 
-export default () => {
-  return (
-    <Show component={Treemap} title="Treemap">
-      {`import React from 'react';
+export default () => (
+  <Show component={Treemap} title="Treemap">
+    {`import React from 'react';
 import { Group } from '@vx/group';
 import { Treemap } from '@vx/hierarchy';
 import { hierarchy, stratify } from 'd3-hierarchy';
@@ -81,6 +80,5 @@ export default ({
   );
 };
 `}
-    </Show>
-  );
-};
+  </Show>
+);

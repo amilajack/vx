@@ -22,7 +22,7 @@ LinePathAnnotation.propTypes = {
   labelFontSize: PropTypes.number,
   labelStroke: PropTypes.string,
   labelStrokeWidth: PropTypes.number,
-  labelPaintOrder: PropTypes.string
+  labelPaintOrder: PropTypes.string,
 };
 
 export default function LinePathAnnotation({
@@ -43,7 +43,7 @@ export default function LinePathAnnotation({
   labelFontSize = 10,
   labelStroke = 'white',
   labelStrokeWidth = 3,
-  labelPaintOrder = 'stroke'
+  labelPaintOrder = 'stroke',
 }) {
   const endPoint = points[points.length - 1];
   return (
